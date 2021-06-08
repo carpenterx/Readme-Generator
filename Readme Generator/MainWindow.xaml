@@ -6,13 +6,13 @@
         xmlns:local="clr-namespace:Readme_Generator"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <Grid Margin="4">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
 
-        <Button Content="Save" Width="80"/>
+        <Button Content="Italic" Width="80" Click="MakeItalic"  Margin="2"/>
 
         <TextBox Grid.Row="1" x:Name="testTxt" Text="public $type$ $property$ { get; set; }$end$" AcceptsReturn="True" TextWrapping="Wrap" HorizontalScrollBarVisibility="Auto"
 VerticalScrollBarVisibility="Auto" AcceptsTab="True" IsInactiveSelectionHighlightEnabled="True" PreviewKeyDown="TestTab" />

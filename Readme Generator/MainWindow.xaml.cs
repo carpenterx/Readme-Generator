@@ -1,18 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Readme_Generator
 {
@@ -21,9 +12,6 @@ namespace Readme_Generator
     /// </summary>
     public partial class MainWindow : Window
     {
-        //private int currentMatchIndex;
-        //private MatchCollection matches;
-
         public MainWindow()
         {
             InitializeComponent();
@@ -73,6 +61,31 @@ namespace Readme_Generator
             textBox.Focus();
             textBox.SelectionStart = selectionStart;
             textBox.SelectionLength = selectionLength;
+        }
+
+        private void MakeItalic(object sender, RoutedEventArgs e)
+        {
+            WrapSelectionWithCharacters("*", "*");
+        }
+
+        private void WrapSelectionWithCharacters(string startChars, string endChars)
+        {
+            if (testTxt.SelectionLength > 0)
+            {
+                string oldText = testTxt.Text;
+                int selectionStartIndex = testTxt.SelectionStart;
+                int selectionLength = testTxt.SelectionLength;
+                int startCharsLength = startChars.Length;
+                StringBuilder newTextBuilder = new();
+                newTextBuilder
+                    .Append(oldText.Substring(0, selectionStartIndex))
+                    .Append(startChars)
+                    .Append(oldText.Substring(selectionStartIndex, selectionLength))
+                    .Append(endChars)
+                    .Append(oldText.Substring(selectionStartIndex + selectionLength));
+                testTxt.Text = newTextBuilder.ToString();
+                FocusTextBox(testTxt, selectionStartIndex + startCharsLength, selectionLength);
+            }
         }
     }
 }
