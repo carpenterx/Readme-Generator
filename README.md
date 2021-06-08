@@ -19,3 +19,4 @@ A simple application for generating readme files inspired by [readme.so](https:/
 - [ ] delete readme template
 - [ ] add selection wrappers for the currently selected text (to make text italic, bold, create links etc.)
 - [ ] maybe add tab completion for tab triggers
+- [ ] maybe add a way to insert emojis
