@@ -86,6 +86,20 @@ namespace Readme_Generator
                 testTxt.Text = newTextBuilder.ToString();
                 FocusTextBox(testTxt, selectionStartIndex + startCharsLength, selectionLength);
             }
+            else
+            {
+                string oldText = testTxt.Text;
+                int caretIndex = testTxt.CaretIndex;
+                int startCharsLength = startChars.Length;
+                StringBuilder newTextBuilder = new();
+                newTextBuilder
+                    .Append(oldText.Substring(0, caretIndex))
+                    .Append(startChars)
+                    .Append(endChars)
+                    .Append(oldText.Substring(caretIndex));
+                testTxt.Text = newTextBuilder.ToString();
+                FocusTextBox(testTxt, caretIndex + startCharsLength);
+            }
         }
 
         private void WrapSelectionWithLines(string startChars, string endChars)
@@ -106,6 +120,22 @@ namespace Readme_Generator
                 testTxt.Text = newTextBuilder.ToString();
                 // the newlines shift the text by 4 characters
                 FocusTextBox(testTxt, selectionStartIndex + startCharsLength + 4, selectionLength);
+            }
+            else
+            {
+                string oldText = testTxt.Text;
+                int caretIndex = testTxt.CaretIndex;
+                int startCharsLength = startChars.Length;
+                StringBuilder newTextBuilder = new();
+                newTextBuilder
+                    .AppendLine(oldText.Substring(0, caretIndex))
+                    .AppendLine(startChars)
+                    .AppendLine()
+                    .AppendLine(endChars)
+                    .Append(oldText.Substring(caretIndex));
+                testTxt.Text = newTextBuilder.ToString();
+                // the newlines shift the text by 4 characters
+                FocusTextBox(testTxt, caretIndex + startCharsLength + 4);
             }
         }
 
