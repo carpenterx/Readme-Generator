@@ -87,5 +87,10 @@ namespace Readme_Generator
                 FocusTextBox(testTxt, selectionStartIndex + startCharsLength, selectionLength);
             }
         }
+
+        private void MakeBold(object sender, RoutedEventArgs e)
+        {
+            WrapSelectionWithCharacters("**", "**");
+        }
     }
 }
