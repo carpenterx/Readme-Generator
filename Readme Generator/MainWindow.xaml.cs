@@ -88,9 +88,35 @@ namespace Readme_Generator
             }
         }
 
+        private void WrapSelectionWithLines(string startChars, string endChars)
+        {
+            if (testTxt.SelectionLength > 0)
+            {
+                string oldText = testTxt.Text;
+                int selectionStartIndex = testTxt.SelectionStart;
+                int selectionLength = testTxt.SelectionLength;
+                int startCharsLength = startChars.Length;
+                StringBuilder newTextBuilder = new();
+                newTextBuilder
+                    .AppendLine(oldText.Substring(0, selectionStartIndex))
+                    .AppendLine(startChars)
+                    .AppendLine(oldText.Substring(selectionStartIndex, selectionLength))
+                    .AppendLine(endChars)
+                    .Append(oldText.Substring(selectionStartIndex + selectionLength));
+                testTxt.Text = newTextBuilder.ToString();
+                // the newlines shift the text by 4 characters
+                FocusTextBox(testTxt, selectionStartIndex + startCharsLength + 4, selectionLength);
+            }
+        }
+
         private void MakeBold(object sender, RoutedEventArgs e)
         {
             WrapSelectionWithCharacters("**", "**");
+        }
+
+        private void MakeCode(object sender, RoutedEventArgs e)
+        {
+            WrapSelectionWithLines("```", "```");
         }
     }
 }
