@@ -109,6 +109,27 @@ namespace Readme_Generator
             }
         }
 
+        private void WrapSelectionWithLink()
+        {
+            // [GitHub](http://github.com)
+            if (testTxt.SelectionLength > 0)
+            {
+                string oldText = testTxt.Text;
+                int selectionStartIndex = testTxt.SelectionStart;
+                int selectionLength = testTxt.SelectionLength;
+                string textBefore = oldText.Substring(0, selectionStartIndex);
+                string selectionText = oldText.Substring(selectionStartIndex, selectionLength);
+                string textAfter = oldText.Substring(selectionStartIndex + selectionLength);
+                StringBuilder newTextBuilder = new();
+                newTextBuilder
+                    .Append(textBefore)
+                    .Append($"[{selectionText}]({selectionText})")
+                    .Append(textAfter);
+                testTxt.Text = newTextBuilder.ToString();
+                FocusTextBox(testTxt, selectionStartIndex + 1, selectionLength);
+            }
+        }
+
         private void MakeBold(object sender, RoutedEventArgs e)
         {
             WrapSelectionWithCharacters("**", "**");
@@ -117,6 +138,11 @@ namespace Readme_Generator
         private void MakeCode(object sender, RoutedEventArgs e)
         {
             WrapSelectionWithLines("```", "```");
+        }
+
+        private void MakeLink(object sender, RoutedEventArgs e)
+        {
+            WrapSelectionWithLink();
         }
     }
 }
