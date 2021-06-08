@@ -17,6 +17,7 @@
             <Button Content="Bold" Width="80" Click="MakeBold"  Margin="2"/>
             <Button Content="Code" Width="80" Click="MakeCode"  Margin="2"/>
             <Button Content="Link" Width="80" Click="MakeLink"  Margin="2"/>
+            <Button Content="Task" Width="80" Click="MakeTask"  Margin="2"/>
         </StackPanel>
 
         <TextBox Grid.Row="1" x:Name="testTxt" Text="public $type$ $property$ { get; set; }$end$" AcceptsReturn="True" TextWrapping="Wrap" HorizontalScrollBarVisibility="Auto"

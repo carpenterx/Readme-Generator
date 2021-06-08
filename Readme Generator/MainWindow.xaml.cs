@@ -68,7 +68,7 @@ namespace Readme_Generator
             WrapSelectionWithCharacters("*", "*");
         }
 
-        private void WrapSelectionWithCharacters(string startChars, string endChars)
+        private void WrapSelectionWithCharacters(string startChars, string endChars = "")
         {
             if (testTxt.SelectionLength > 0)
             {
@@ -143,6 +143,11 @@ namespace Readme_Generator
         private void MakeLink(object sender, RoutedEventArgs e)
         {
             WrapSelectionWithLink();
+        }
+
+        private void MakeTask(object sender, RoutedEventArgs e)
+        {
+            WrapSelectionWithCharacters("- [ ] ");
         }
     }
 }
