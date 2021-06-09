@@ -35,6 +35,6 @@
             </ListView.ItemTemplate>
         </ListView>
         
-        <TextBox Grid.Row="1" Grid.Column="1" x:Name="testTxt" Text="public $type$ $property$ { get; set; }$end$" AcceptsReturn="True" TextWrapping="Wrap" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" AcceptsTab="True" IsInactiveSelectionHighlightEnabled="True" PreviewKeyDown="TestTab" />
+        <TextBox Grid.Row="1" Grid.Column="1" x:Name="readmeTxt" Text="public $type$ $property$ { get; set; }$end$" AcceptsReturn="True" TextWrapping="Wrap" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" AcceptsTab="True" IsInactiveSelectionHighlightEnabled="True" PreviewKeyDown="TestTab" />
     </Grid>
 </Window>
