@@ -12,7 +12,12 @@
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
 
-        <StackPanel Orientation="Horizontal">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="3*" />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2">
             <Button Content="Italic" Width="80" Click="MakeItalic"  Margin="2"/>
             <Button Content="Bold" Width="80" Click="MakeBold"  Margin="2"/>
             <Button Content="Code" Width="80" Click="MakeCode"  Margin="2"/>
@@ -21,7 +26,14 @@
             <Button Content="Key" Width="80" Click="MakeKey"  Margin="2"/>
         </StackPanel>
 
-        <TextBox Grid.Row="1" x:Name="testTxt" Text="public $type$ $property$ { get; set; }$end$" AcceptsReturn="True" TextWrapping="Wrap" HorizontalScrollBarVisibility="Auto"
-VerticalScrollBarVisibility="Auto" AcceptsTab="True" IsInactiveSelectionHighlightEnabled="True" PreviewKeyDown="TestTab" />
+        <ListView x:Name="sectionsListView" Grid.Row="1">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        
+        <TextBox Grid.Row="1" Grid.Column="1" x:Name="testTxt" Text="public $type$ $property$ { get; set; }$end$" AcceptsReturn="True" TextWrapping="Wrap" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" AcceptsTab="True" IsInactiveSelectionHighlightEnabled="True" PreviewKeyDown="TestTab" />
     </Grid>
 </Window>
