@@ -2,11 +2,13 @@
 using Readme_Generator.Windows;
 using System;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using YamlDotNet.Serialization;
 
 namespace Readme_Generator
 {
@@ -15,11 +17,29 @@ namespace Readme_Generator
     /// </summary>
     public partial class MainWindow : Window
     {
+        private static readonly string APPLICATION_FOLDER = "Readme Generator";
+        private static readonly string SECTION_TEMPLATES_FILE = "section templates.yml";
+        private readonly string sectionTemplatesPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), APPLICATION_FOLDER, SECTION_TEMPLATES_FILE);
+
         private ObservableCollection<SectionTemplate> sectionsList = new();
 
         public MainWindow()
         {
             InitializeComponent();
+
+            LoadSectionTemplates();
+        }
+
+        private void LoadSectionTemplates()
+        {
+            if (File.Exists(sectionTemplatesPath))
+            {
+                var input = new StringReader(File.ReadAllText(sectionTemplatesPath));
+                var deserializer = new DeserializerBuilder().Build();
+
+                ObservableCollection<SectionTemplate> sections = deserializer.Deserialize<ObservableCollection<SectionTemplate>>(input);
+                sectionsList = new ObservableCollection<SectionTemplate>(sections);
+            }
 
             sectionsListView.ItemsSource = sectionsList;
         }
