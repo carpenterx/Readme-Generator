@@ -24,6 +24,7 @@
             <Button Content="Link" Width="80" Click="MakeLink"  Margin="2"/>
             <Button Content="Task" Width="80" Click="MakeTask"  Margin="2"/>
             <Button Content="Key" Width="80" Click="MakeKey"  Margin="2"/>
+            <Button Content="Add Section" Width="80" Click="AddSectionClick"  Margin="2"/>
         </StackPanel>
 
         <ListView x:Name="sectionsListView" Grid.Row="1">

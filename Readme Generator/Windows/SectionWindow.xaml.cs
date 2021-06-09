@@ -1,16 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Readme_Generator.Models;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Readme_Generator.Windows
 {
@@ -19,9 +8,27 @@ namespace Readme_Generator.Windows
     /// </summary>
     public partial class SectionWindow : Window
     {
+        private Section section;
+
         public SectionWindow()
         {
             InitializeComponent();
+        }
+
+        public Section GetSection()
+        {
+            return section;
+        }
+
+        private void AddSectionClick(object sender, RoutedEventArgs e)
+        {
+            section = new Section
+            {
+                Name = nameTxt.Text,
+                Body = bodyTxt.Text,
+            };
+            GetWindow(this).DialogResult = true;
+            GetWindow(this).Close();
         }
     }
 }

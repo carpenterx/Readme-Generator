@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Readme_Generator.Models
 {
-    class Section
+    public class Section
     {
         public string Name { get; set; }
         public string Body { get; set; }

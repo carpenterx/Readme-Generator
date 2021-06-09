@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Readme_Generator.Models;
+using Readme_Generator.Windows;
+using System;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -12,9 +15,13 @@ namespace Readme_Generator
     /// </summary>
     public partial class MainWindow : Window
     {
+        private ObservableCollection<Section> sectionsList = new();
+
         public MainWindow()
         {
             InitializeComponent();
+
+            sectionsListView.ItemsSource = sectionsList;
         }
 
         private void TestTab(object sender, KeyEventArgs e)
@@ -183,6 +190,16 @@ namespace Readme_Generator
         private void MakeKey(object sender, RoutedEventArgs e)
         {
             WrapSelectionWithCharacters("<kbd>", "</kbd>");
+        }
+
+        private void AddSectionClick(object sender, RoutedEventArgs e)
+        {
+            SectionWindow sectionWindow = new();
+            sectionWindow.Owner = this;
+            if (sectionWindow.ShowDialog() == true)
+            {
+                sectionsList.Add(sectionWindow.GetSection());
+            }
         }
     }
 }
