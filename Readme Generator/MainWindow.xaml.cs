@@ -233,5 +233,18 @@ namespace Readme_Generator
                 readmeTxt.Text = newText.ToString();
             }
         }
+
+        private void SaveData(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            string appDirectory = Path.GetDirectoryName(sectionTemplatesPath);
+            if (!Directory.Exists(appDirectory))
+            {
+                Directory.CreateDirectory(appDirectory);
+            }
+
+            var serializer = new SerializerBuilder().Build();
+            var yaml = serializer.Serialize(sectionsList);
+            File.WriteAllText(sectionTemplatesPath, yaml);
+        }
     }
 }
