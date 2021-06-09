@@ -179,5 +179,10 @@ namespace Readme_Generator
         {
             WrapSelectionWithCharacters("- [ ] ");
         }
+
+        private void MakeKey(object sender, RoutedEventArgs e)
+        {
+            WrapSelectionWithCharacters("<kbd>", "</kbd>");
+        }
     }
 }
