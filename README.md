@@ -21,3 +21,4 @@ A simple application for generating readme files inspired by [readme.so](https:/
 - [ ] maybe add tab completion for tab triggers
 - [ ] maybe add a way to insert emojis
 - [ ] maybe add the option to import a templates list file and combine the imported templates with the currently saved ones. It would also be nice to have a "new" tag for recently added section and readme templates
+- [ ] maybe change the font and make it a bit larger
