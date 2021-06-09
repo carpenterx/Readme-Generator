@@ -15,7 +15,7 @@ namespace Readme_Generator
     /// </summary>
     public partial class MainWindow : Window
     {
-        private ObservableCollection<Section> sectionsList = new();
+        private ObservableCollection<SectionTemplate> sectionsList = new();
 
         public MainWindow()
         {
@@ -204,7 +204,7 @@ namespace Readme_Generator
 
         private void SectionSelected(object sender, SelectionChangedEventArgs e)
         {
-            if ((sender as ListView).SelectedItem is Section selectedSection)
+            if ((sender as ListView).SelectedItem is SectionTemplate selectedSection)
             {
                 StringBuilder newText = new();
                 newText

@@ -8,21 +8,21 @@ namespace Readme_Generator.Windows
     /// </summary>
     public partial class SectionWindow : Window
     {
-        private Section section;
+        private SectionTemplate section;
 
         public SectionWindow()
         {
             InitializeComponent();
         }
 
-        public Section GetSection()
+        public SectionTemplate GetSection()
         {
             return section;
         }
 
         private void AddSectionClick(object sender, RoutedEventArgs e)
         {
-            section = new Section
+            section = new SectionTemplate
             {
                 Name = nameTxt.Text,
                 Body = bodyTxt.Text,
