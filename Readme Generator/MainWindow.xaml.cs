@@ -201,5 +201,17 @@ namespace Readme_Generator
                 sectionsList.Add(sectionWindow.GetSection());
             }
         }
+
+        private void SectionSelected(object sender, SelectionChangedEventArgs e)
+        {
+            if ((sender as ListView).SelectedItem is Section selectedSection)
+            {
+                StringBuilder newText = new();
+                newText
+                    .AppendLine(readmeTxt.Text)
+                    .AppendLine(selectedSection.Body);
+                readmeTxt.Text = newText.ToString();
+            }
+        }
     }
 }
