@@ -38,7 +38,7 @@
             </ListView.ItemTemplate>
         </ListView>
         
-        <TextBox Grid.Row="1" Grid.Column="1" x:Name="sectionTxt" Text="{Binding Body, Mode=TwoWay}" AcceptsReturn="True" TextWrapping="Wrap" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" AcceptsTab="True" IsInactiveSelectionHighlightEnabled="True" PreviewKeyDown="TestTab" Padding="2" Margin="2"/>
+        <TextBox Grid.Row="1" Grid.Column="1" x:Name="sectionTxt" Text="{Binding Body, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="True" TextWrapping="Wrap" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" AcceptsTab="True" IsInactiveSelectionHighlightEnabled="True" PreviewKeyDown="TestTab" Padding="2" Margin="2"/>
 
         <ListView x:Name="allSectionsListView" Grid.Row="2" d:ItemsSource='{d:SampleData}' Margin="2" SelectionMode="Single" SelectionChanged="AddSectionToReadme">
             <ListView.ItemTemplate>
