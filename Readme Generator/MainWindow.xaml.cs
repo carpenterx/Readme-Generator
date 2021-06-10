@@ -22,6 +22,7 @@ namespace Readme_Generator
         private readonly string sectionTemplatesPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), APPLICATION_FOLDER, SECTION_TEMPLATES_FILE);
 
         private ObservableCollection<SectionTemplate> allSectionsList = new();
+        private ObservableCollection<SectionTemplate> selectedSectionsList = new();
 
         public MainWindow()
         {
@@ -42,6 +43,7 @@ namespace Readme_Generator
             }
 
             allSectionsListView.ItemsSource = allSectionsList;
+            selectedSectionsListView.ItemsSource = selectedSectionsList;
         }
 
         private void TestTab(object sender, KeyEventArgs e)
@@ -250,7 +252,16 @@ namespace Readme_Generator
 
         private void AddSectionToReadme(object sender, SelectionChangedEventArgs e)
         {
-
+            if ((sender as ListView).SelectedItem is SectionTemplate selectedSection)
+            {
+                /*StringBuilder newText = new();
+                newText
+                    .AppendLine(readmeTxt.Text)
+                    .AppendLine(selectedSection.Body);
+                readmeTxt.Text = newText.ToString();*/
+                //sectionTxt.Text = selectedSection.Body;
+                selectedSectionsList.Add(selectedSection);
+            }
         }
     }
 }
