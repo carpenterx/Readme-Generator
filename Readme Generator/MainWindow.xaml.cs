@@ -21,7 +21,7 @@ namespace Readme_Generator
         private static readonly string SECTION_TEMPLATES_FILE = "section templates.yml";
         private readonly string sectionTemplatesPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), APPLICATION_FOLDER, SECTION_TEMPLATES_FILE);
 
-        private ObservableCollection<SectionTemplate> sectionsList = new();
+        private ObservableCollection<SectionTemplate> allSectionsList = new();
 
         public MainWindow()
         {
@@ -38,10 +38,10 @@ namespace Readme_Generator
                 var deserializer = new DeserializerBuilder().Build();
 
                 ObservableCollection<SectionTemplate> sections = deserializer.Deserialize<ObservableCollection<SectionTemplate>>(input);
-                sectionsList = new ObservableCollection<SectionTemplate>(sections);
+                allSectionsList = new ObservableCollection<SectionTemplate>(sections);
             }
 
-            selectedSectionsListView.ItemsSource = sectionsList;
+            allSectionsListView.ItemsSource = allSectionsList;
         }
 
         private void TestTab(object sender, KeyEventArgs e)
@@ -218,7 +218,7 @@ namespace Readme_Generator
             sectionWindow.Owner = this;
             if (sectionWindow.ShowDialog() == true)
             {
-                sectionsList.Add(sectionWindow.GetSection());
+                allSectionsList.Add(sectionWindow.GetSection());
             }
         }
 
@@ -244,7 +244,7 @@ namespace Readme_Generator
             }
 
             var serializer = new SerializerBuilder().Build();
-            var yaml = serializer.Serialize(sectionsList);
+            var yaml = serializer.Serialize(allSectionsList);
             File.WriteAllText(sectionTemplatesPath, yaml);
         }
 
