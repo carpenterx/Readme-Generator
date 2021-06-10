@@ -41,7 +41,7 @@ namespace Readme_Generator
                 sectionsList = new ObservableCollection<SectionTemplate>(sections);
             }
 
-            sectionsListView.ItemsSource = sectionsList;
+            selectedSectionsListView.ItemsSource = sectionsList;
         }
 
         private void TestTab(object sender, KeyEventArgs e)
@@ -222,15 +222,16 @@ namespace Readme_Generator
             }
         }
 
-        private void SectionSelected(object sender, SelectionChangedEventArgs e)
+        private void AppendSelectedSection(object sender, SelectionChangedEventArgs e)
         {
             if ((sender as ListView).SelectedItem is SectionTemplate selectedSection)
             {
-                StringBuilder newText = new();
+                /*StringBuilder newText = new();
                 newText
                     .AppendLine(readmeTxt.Text)
                     .AppendLine(selectedSection.Body);
-                readmeTxt.Text = newText.ToString();
+                readmeTxt.Text = newText.ToString();*/
+                sectionTxt.Text = selectedSection.Body;
             }
         }
 
@@ -245,6 +246,11 @@ namespace Readme_Generator
             var serializer = new SerializerBuilder().Build();
             var yaml = serializer.Serialize(sectionsList);
             File.WriteAllText(sectionTemplatesPath, yaml);
+        }
+
+        private void AddSectionToReadme(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

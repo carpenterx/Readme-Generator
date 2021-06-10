@@ -11,6 +11,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
             <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -28,7 +29,7 @@
             <Button Content="Add Section" Width="80" Click="AddSectionClick"  Margin="2"/>
         </StackPanel>
 
-        <ListView x:Name="sectionsListView" Grid.Row="1" Margin="2" SelectionMode="Single" SelectionChanged="SectionSelected">
+        <ListView x:Name="selectedSectionsListView" Grid.Row="1" d:ItemsSource='{d:SampleData}' Margin="2" SelectionMode="Single" SelectionChanged="AppendSelectedSection">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Name}" />
@@ -36,6 +37,16 @@
             </ListView.ItemTemplate>
         </ListView>
         
-        <TextBox Grid.Row="1" Grid.Column="1" x:Name="readmeTxt" Text="public $type$ $property$ { get; set; }$end$" AcceptsReturn="True" TextWrapping="Wrap" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" AcceptsTab="True" IsInactiveSelectionHighlightEnabled="True" PreviewKeyDown="TestTab" Padding="2" Margin="2"/>
+        <TextBox Grid.Row="1" Grid.Column="1" x:Name="sectionTxt" Text="public $type$ $property$ { get; set; }$end$" AcceptsReturn="True" TextWrapping="Wrap" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" AcceptsTab="True" IsInactiveSelectionHighlightEnabled="True" PreviewKeyDown="TestTab" Padding="2" Margin="2"/>
+
+        <ListView x:Name="allSectionsListView" Grid.Row="2" d:ItemsSource='{d:SampleData}' Margin="2" SelectionMode="Single" SelectionChanged="AddSectionToReadme">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <TextBox Grid.Row="2" Grid.Column="1" x:Name="readmeTxt" Text="public $type$ $property$ { get; set; }$end$" AcceptsReturn="True" TextWrapping="Wrap" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" AcceptsTab="True" IsInactiveSelectionHighlightEnabled="True" PreviewKeyDown="TestTab" Padding="2" Margin="2"/>
     </Grid>
 </Window>
