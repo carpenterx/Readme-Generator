@@ -22,11 +22,7 @@ namespace Readme_Generator.Windows
 
         private void AddSectionClick(object sender, RoutedEventArgs e)
         {
-            section = new SectionTemplate
-            {
-                Name = nameTxt.Text,
-                Body = bodyTxt.Text,
-            };
+            section = new SectionTemplate(nameTxt.Text, bodyTxt.Text);
             GetWindow(this).DialogResult = true;
             GetWindow(this).Close();
         }

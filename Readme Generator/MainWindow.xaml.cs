@@ -9,6 +9,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using YamlDotNet.Serialization;
+using System.Linq;
 
 namespace Readme_Generator
 {
@@ -256,7 +257,10 @@ namespace Readme_Generator
         {
             if ((sender as ListView).SelectedItem is SectionTemplate selectedSection)
             {
-                selectedSectionsList.Add(selectedSection);
+                if (selectedSectionsList.FirstOrDefault(i => i.Name == selectedSection.Name) == null)
+                {
+                    selectedSectionsList.Add(new SectionTemplate(selectedSection));
+                }
             }
         }
     }
