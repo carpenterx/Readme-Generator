@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Readme_Generator"
+        xmlns:models="clr-namespace:Readme_Generator.Models"
         mc:Ignorable="d"
         Title="Readme Generator" Height="450" Width="800"
         Closing="SaveData">
@@ -37,7 +38,7 @@
             </ListView.ItemTemplate>
         </ListView>
         
-        <TextBox Grid.Row="1" Grid.Column="1" x:Name="sectionTxt" Text="public $type$ $property$ { get; set; }$end$" AcceptsReturn="True" TextWrapping="Wrap" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" AcceptsTab="True" IsInactiveSelectionHighlightEnabled="True" PreviewKeyDown="TestTab" Padding="2" Margin="2"/>
+        <TextBox Grid.Row="1" Grid.Column="1" x:Name="sectionTxt" Text="{Binding Body, Mode=TwoWay}" AcceptsReturn="True" TextWrapping="Wrap" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" AcceptsTab="True" IsInactiveSelectionHighlightEnabled="True" PreviewKeyDown="TestTab" Padding="2" Margin="2"/>
 
         <ListView x:Name="allSectionsListView" Grid.Row="2" d:ItemsSource='{d:SampleData}' Margin="2" SelectionMode="Single" SelectionChanged="AddSectionToReadme">
             <ListView.ItemTemplate>

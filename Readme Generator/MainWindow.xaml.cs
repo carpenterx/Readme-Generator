@@ -233,7 +233,8 @@ namespace Readme_Generator
                     .AppendLine(readmeTxt.Text)
                     .AppendLine(selectedSection.Body);
                 readmeTxt.Text = newText.ToString();*/
-                sectionTxt.Text = selectedSection.Body;
+                //sectionTxt.Text = selectedSection.Body;
+                sectionTxt.DataContext = selectedSection;
                 FindNextMatch(sectionTxt);
             }
         }
