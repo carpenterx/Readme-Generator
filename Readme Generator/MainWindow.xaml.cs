@@ -20,7 +20,9 @@ namespace Readme_Generator
     {
         private static readonly string APPLICATION_FOLDER = "Readme Generator";
         private static readonly string SECTION_TEMPLATES_FILE = "section templates.yml";
+        private static readonly string README_TEMPLATE_FILE = "readme template.yml";
         private readonly string sectionTemplatesPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), APPLICATION_FOLDER, SECTION_TEMPLATES_FILE);
+        private readonly string readmeTemplatePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), APPLICATION_FOLDER, README_TEMPLATE_FILE);
 
         private ObservableCollection<SectionTemplate> allSectionsList = new();
         private ObservableCollection<SectionTemplate> selectedSectionsList = new();
@@ -34,17 +36,26 @@ namespace Readme_Generator
 
         private void LoadSectionTemplates()
         {
-            if (File.Exists(sectionTemplatesPath))
-            {
-                var input = new StringReader(File.ReadAllText(sectionTemplatesPath));
-                var deserializer = new DeserializerBuilder().Build();
-
-                ObservableCollection<SectionTemplate> sections = deserializer.Deserialize<ObservableCollection<SectionTemplate>>(input);
-                allSectionsList = new ObservableCollection<SectionTemplate>(sections);
-            }
+            allSectionsList = LoadFileToList<SectionTemplate>(sectionTemplatesPath);
+            selectedSectionsList = LoadFileToList<SectionTemplate>(readmeTemplatePath);
 
             allSectionsListView.ItemsSource = allSectionsList;
             selectedSectionsListView.ItemsSource = selectedSectionsList;
+        }
+
+        private ObservableCollection<T> LoadFileToList<T>(string filePath)
+        {
+            ObservableCollection<T> list = new();
+            if (File.Exists(filePath))
+            {
+                var input = new StringReader(File.ReadAllText(filePath));
+                var deserializer = new DeserializerBuilder().Build();
+
+                ObservableCollection<T> items = deserializer.Deserialize<ObservableCollection<T>>(input);
+                list = new ObservableCollection<T>(items);
+            }
+
+            return list;
         }
 
         private void TestTab(object sender, KeyEventArgs e)
@@ -248,9 +259,15 @@ namespace Readme_Generator
                 Directory.CreateDirectory(appDirectory);
             }
 
+            SaveFileToYaml(sectionTemplatesPath, allSectionsList);
+            SaveFileToYaml(readmeTemplatePath, selectedSectionsList);
+        }
+
+        private void SaveFileToYaml<T>(string filePath, ObservableCollection<T> list)
+        {
             var serializer = new SerializerBuilder().Build();
-            var yaml = serializer.Serialize(allSectionsList);
-            File.WriteAllText(sectionTemplatesPath, yaml);
+            var yaml = serializer.Serialize(list);
+            File.WriteAllText(filePath, yaml);
         }
 
         private void AddSectionToReadme(object sender, SelectionChangedEventArgs e)
