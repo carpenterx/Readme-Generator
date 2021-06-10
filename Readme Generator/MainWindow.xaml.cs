@@ -234,6 +234,7 @@ namespace Readme_Generator
                     .AppendLine(selectedSection.Body);
                 readmeTxt.Text = newText.ToString();*/
                 sectionTxt.Text = selectedSection.Body;
+                FindNextMatch(sectionTxt);
             }
         }
 
