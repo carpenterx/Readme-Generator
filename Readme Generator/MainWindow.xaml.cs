@@ -54,28 +54,28 @@ namespace Readme_Generator
                 
                 if (snippetMode)
                 {
-                    FindNextMatch();
+                    FindNextMatch(sectionTxt);
                     e.Handled = true;
                 }
             }
         }
 
-        private void FindNextMatch()
+        private void FindNextMatch(TextBox textBox)
         {
             try
             {
                 Regex rgx = new Regex(@"\$\S+\$");
-                string testString = readmeTxt.Text;
+                string testString = textBox.Text;
 
                 MatchCollection matches = rgx.Matches(testString);
 
                 if(matches.Count > 0)
                 {
-                    FocusTextBox(readmeTxt, matches[0].Index, matches[0].Value.Length);
+                    FocusTextBox(textBox, matches[0].Index, matches[0].Value.Length);
                 }
                 else
                 {
-                    FocusTextBox(readmeTxt, readmeTxt.Text.Length);
+                    FocusTextBox(textBox, textBox.Text.Length);
                 }
                 
             }
@@ -94,16 +94,16 @@ namespace Readme_Generator
 
         private void MakeItalic(object sender, RoutedEventArgs e)
         {
-            WrapSelectionWithCharacters("*", "*");
+            WrapSelectionWithCharacters(sectionTxt, "*", "*");
         }
 
-        private void WrapSelectionWithCharacters(string startChars, string endChars = "")
+        private void WrapSelectionWithCharacters(TextBox textBox, string startChars, string endChars = "")
         {
-            if (readmeTxt.SelectionLength > 0)
+            if (textBox.SelectionLength > 0)
             {
-                string oldText = readmeTxt.Text;
-                int selectionStartIndex = readmeTxt.SelectionStart;
-                int selectionLength = readmeTxt.SelectionLength;
+                string oldText = textBox.Text;
+                int selectionStartIndex = textBox.SelectionStart;
+                int selectionLength = textBox.SelectionLength;
                 int startCharsLength = startChars.Length;
                 StringBuilder newTextBuilder = new();
                 newTextBuilder
@@ -112,13 +112,13 @@ namespace Readme_Generator
                     .Append(oldText.Substring(selectionStartIndex, selectionLength))
                     .Append(endChars)
                     .Append(oldText.Substring(selectionStartIndex + selectionLength));
-                readmeTxt.Text = newTextBuilder.ToString();
-                FocusTextBox(readmeTxt, selectionStartIndex + startCharsLength, selectionLength);
+                textBox.Text = newTextBuilder.ToString();
+                FocusTextBox(textBox, selectionStartIndex + startCharsLength, selectionLength);
             }
             else
             {
-                string oldText = readmeTxt.Text;
-                int caretIndex = readmeTxt.CaretIndex;
+                string oldText = textBox.Text;
+                int caretIndex = textBox.CaretIndex;
                 int startCharsLength = startChars.Length;
                 StringBuilder newTextBuilder = new();
                 newTextBuilder
@@ -126,18 +126,18 @@ namespace Readme_Generator
                     .Append(startChars)
                     .Append(endChars)
                     .Append(oldText.Substring(caretIndex));
-                readmeTxt.Text = newTextBuilder.ToString();
-                FocusTextBox(readmeTxt, caretIndex + startCharsLength);
+                textBox.Text = newTextBuilder.ToString();
+                FocusTextBox(textBox, caretIndex + startCharsLength);
             }
         }
 
-        private void WrapSelectionWithLines(string startChars, string endChars)
+        private void WrapSelectionWithLines(TextBox textBox, string startChars, string endChars)
         {
-            if (readmeTxt.SelectionLength > 0)
+            if (textBox.SelectionLength > 0)
             {
-                string oldText = readmeTxt.Text;
-                int selectionStartIndex = readmeTxt.SelectionStart;
-                int selectionLength = readmeTxt.SelectionLength;
+                string oldText = textBox.Text;
+                int selectionStartIndex = textBox.SelectionStart;
+                int selectionLength = textBox.SelectionLength;
                 int startCharsLength = startChars.Length;
                 StringBuilder newTextBuilder = new();
                 newTextBuilder
@@ -146,14 +146,14 @@ namespace Readme_Generator
                     .AppendLine(oldText.Substring(selectionStartIndex, selectionLength))
                     .AppendLine(endChars)
                     .Append(oldText.Substring(selectionStartIndex + selectionLength));
-                readmeTxt.Text = newTextBuilder.ToString();
+                textBox.Text = newTextBuilder.ToString();
                 // the newlines shift the text by 4 characters
-                FocusTextBox(readmeTxt, selectionStartIndex + startCharsLength + 4, selectionLength);
+                FocusTextBox(textBox, selectionStartIndex + startCharsLength + 4, selectionLength);
             }
             else
             {
-                string oldText = readmeTxt.Text;
-                int caretIndex = readmeTxt.CaretIndex;
+                string oldText = textBox.Text;
+                int caretIndex = textBox.CaretIndex;
                 int startCharsLength = startChars.Length;
                 StringBuilder newTextBuilder = new();
                 newTextBuilder
@@ -162,20 +162,20 @@ namespace Readme_Generator
                     .AppendLine()
                     .AppendLine(endChars)
                     .Append(oldText.Substring(caretIndex));
-                readmeTxt.Text = newTextBuilder.ToString();
+                textBox.Text = newTextBuilder.ToString();
                 // the newlines shift the text by 4 characters
-                FocusTextBox(readmeTxt, caretIndex + startCharsLength + 4);
+                FocusTextBox(textBox, caretIndex + startCharsLength + 4);
             }
         }
 
-        private void WrapSelectionWithLink()
+        private void WrapSelectionWithLink(TextBox textBox)
         {
             // [GitHub](http://github.com)
-            if (readmeTxt.SelectionLength > 0)
+            if (textBox.SelectionLength > 0)
             {
-                string oldText = readmeTxt.Text;
-                int selectionStartIndex = readmeTxt.SelectionStart;
-                int selectionLength = readmeTxt.SelectionLength;
+                string oldText = textBox.Text;
+                int selectionStartIndex = textBox.SelectionStart;
+                int selectionLength = textBox.SelectionLength;
                 string textBefore = oldText.Substring(0, selectionStartIndex);
                 string selectionText = oldText.Substring(selectionStartIndex, selectionLength);
                 string textAfter = oldText.Substring(selectionStartIndex + selectionLength);
@@ -184,34 +184,34 @@ namespace Readme_Generator
                     .Append(textBefore)
                     .Append($"[{selectionText}]({selectionText})")
                     .Append(textAfter);
-                readmeTxt.Text = newTextBuilder.ToString();
-                FocusTextBox(readmeTxt, selectionStartIndex + 1, selectionLength);
+                textBox.Text = newTextBuilder.ToString();
+                FocusTextBox(textBox, selectionStartIndex + 1, selectionLength);
             }
         }
 
         private void MakeBold(object sender, RoutedEventArgs e)
         {
-            WrapSelectionWithCharacters("**", "**");
+            WrapSelectionWithCharacters(sectionTxt, "**", "**");
         }
 
         private void MakeCode(object sender, RoutedEventArgs e)
         {
-            WrapSelectionWithLines("```", "```");
+            WrapSelectionWithLines(sectionTxt, "```", "```");
         }
 
         private void MakeLink(object sender, RoutedEventArgs e)
         {
-            WrapSelectionWithLink();
+            WrapSelectionWithLink(sectionTxt);
         }
 
         private void MakeTask(object sender, RoutedEventArgs e)
         {
-            WrapSelectionWithCharacters("- [ ] ");
+            WrapSelectionWithCharacters(sectionTxt, "- [ ] ");
         }
 
         private void MakeKey(object sender, RoutedEventArgs e)
         {
-            WrapSelectionWithCharacters("<kbd>", "</kbd>");
+            WrapSelectionWithCharacters(sectionTxt, "<kbd>", "</kbd>");
         }
 
         private void AddSectionClick(object sender, RoutedEventArgs e)
@@ -254,12 +254,6 @@ namespace Readme_Generator
         {
             if ((sender as ListView).SelectedItem is SectionTemplate selectedSection)
             {
-                /*StringBuilder newText = new();
-                newText
-                    .AppendLine(readmeTxt.Text)
-                    .AppendLine(selectedSection.Body);
-                readmeTxt.Text = newText.ToString();*/
-                //sectionTxt.Text = selectedSection.Body;
                 selectedSectionsList.Add(selectedSection);
             }
         }
