@@ -12,7 +12,7 @@ A simple application for generating readme files inspired by [readme.so](https:/
 - [ ] move to the next/prev section functionality
 - [ ] save readme (as yaml)
 - [ ] add window to create a new readme template (and display available readme templates)
-- [ ] copy readme to clipboard
+- [x] copy readme to clipboard
 - [ ] move section up/down
 - [ ] edit section
 - [ ] delete section
@@ -28,4 +28,4 @@ A simple application for generating readme files inspired by [readme.so](https:/
 - [x] selecting a section should jump to the first replacement match
 - [ ] see if it is possible to show an adorner (like a tab keyboard key image) at the current cursor position when tab expansion is available
 - [ ] maybe add a check icon if a section in the selected sections list hass no placeholder values in its body
-- [ ] the readme output should probably not be editable
+- [x] the readme output should probably not be editable
