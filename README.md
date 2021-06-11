@@ -30,3 +30,4 @@ A simple application for generating readme files inspired by [readme.so](https:/
 - [ ] maybe add a check icon if a section in the selected sections list has no placeholder values in its body
 - [x] the readme output should probably not be editable
 - [ ] maybe allow creating new readme templates from the main page
+- [ ] maybe add a readme importing option that generates a section from each heading and has the text between as a body
