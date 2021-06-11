@@ -28,3 +28,4 @@ A simple application for generating readme files inspired by [readme.so](https:/
 - [x] selecting a section should jump to the first replacement match
 - [ ] see if it is possible to show an adorner (like a tab keyboard key image) at the current cursor position when tab expansion is available
 - [ ] maybe add a check icon if a section in the selected sections list hass no placeholder values in its body
+- [ ] the readme output should probably not be editable
