@@ -76,7 +76,7 @@ namespace Readme_Generator
         {
             try
             {
-                Regex rgx = new Regex(@"\$\S+\$");
+                Regex rgx = new Regex(@"\$.+?\$");
                 string testString = textBox.Text;
 
                 MatchCollection matches = rgx.Matches(testString);
