@@ -65,8 +65,6 @@
                 </ListView.ItemTemplate>
             </ListView>
         </Grid>
-        
-        
 
         <TextBox Grid.Row="2" Grid.Column="1" x:Name="readmeTxt" Text="public $type$ $property$ { get; set; }$end$" AcceptsReturn="True" TextWrapping="Wrap" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" AcceptsTab="True" IsInactiveSelectionHighlightEnabled="True" IsReadOnly="True" Padding="2" Margin="2"/>
     </Grid>
