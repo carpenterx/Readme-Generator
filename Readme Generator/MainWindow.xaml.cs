@@ -240,14 +240,15 @@ namespace Readme_Generator
         {
             if ((sender as ListView).SelectedItem is SectionTemplate selectedSection)
             {
-                /*StringBuilder newText = new();
-                newText
-                    .AppendLine(readmeTxt.Text)
-                    .AppendLine(selectedSection.Body);
-                readmeTxt.Text = newText.ToString();*/
-                //sectionTxt.Text = selectedSection.Body;
-                sectionTxt.DataContext = selectedSection;
-                FindNextMatch(sectionTxt);
+                if (Keyboard.IsKeyDown(Key.LeftCtrl))
+                {
+                    ((sender as ListView).ItemsSource as ObservableCollection<SectionTemplate>).Remove(selectedSection);
+                }
+                else
+                {
+                    sectionTxt.DataContext = selectedSection;
+                    FindNextMatch(sectionTxt);
+                }
             }
         }
 
@@ -274,9 +275,16 @@ namespace Readme_Generator
         {
             if ((sender as ListView).SelectedItem is SectionTemplate selectedSection)
             {
-                if (selectedSectionsList.FirstOrDefault(i => i.Name == selectedSection.Name) == null)
+                if (Keyboard.IsKeyDown(Key.LeftCtrl))
                 {
-                    selectedSectionsList.Add(new SectionTemplate(selectedSection));
+                    ((sender as ListView).ItemsSource as ObservableCollection<SectionTemplate>).Remove(selectedSection);
+                }
+                else
+                {
+                    if (selectedSectionsList.FirstOrDefault(i => i.Name == selectedSection.Name) == null)
+                    {
+                        selectedSectionsList.Add(new SectionTemplate(selectedSection));
+                    }
                 }
             }
         }
