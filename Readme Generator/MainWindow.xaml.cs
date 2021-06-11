@@ -279,6 +279,11 @@ namespace Readme_Generator
                 {
                     ((sender as ListView).ItemsSource as ObservableCollection<SectionTemplate>).Remove(selectedSection);
                 }
+                else if (Keyboard.IsKeyDown(Key.LeftShift))
+                {
+                    sectionTxt.DataContext = selectedSection;
+                    FindNextMatch(sectionTxt);
+                }
                 else
                 {
                     if (selectedSectionsList.FirstOrDefault(i => i.Name == selectedSection.Name) == null)
