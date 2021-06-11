@@ -28,6 +28,7 @@
             <Button Content="Task" Width="80" Click="MakeTask"  Margin="2"/>
             <Button Content="Key" Width="80" Click="MakeKey"  Margin="2"/>
             <Button Content="Add Section" Width="80" Click="AddSectionClick"  Margin="2"/>
+            <Button Content="Copy" Width="80" Click="CopyReadme"  Margin="2"/>
         </StackPanel>
 
         <ListView x:Name="selectedSectionsListView" Grid.Row="1" d:ItemsSource='{d:SampleData}' Margin="2" SelectionMode="Single" SelectionChanged="AppendSelectedSection">

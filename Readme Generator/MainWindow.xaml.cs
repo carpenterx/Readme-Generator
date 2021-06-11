@@ -300,5 +300,10 @@ namespace Readme_Generator
 
             readmeTxt.Text = readmeBuilder.ToString();
         }
+
+        private void CopyReadme(object sender, RoutedEventArgs e)
+        {
+            Clipboard.SetText(readmeTxt.Text);
+        }
     }
 }
