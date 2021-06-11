@@ -288,5 +288,17 @@ namespace Readme_Generator
                 }
             }
         }
+
+        private void UpdateReadmeOutput(object sender, TextChangedEventArgs e)
+        {
+            StringBuilder readmeBuilder = new();
+
+            foreach (SectionTemplate section in selectedSectionsList)
+            {
+                readmeBuilder.AppendLine(section.Body).AppendLine();
+            }
+
+            readmeTxt.Text = readmeBuilder.ToString();
+        }
     }
 }
