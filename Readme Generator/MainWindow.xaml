@@ -38,7 +38,7 @@
             </Grid.RowDefinitions>
             
             <Label Content="Readme template"/>
-            <ListView Grid.Row="1" x:Name="selectedSectionsListView" d:ItemsSource='{d:SampleData}' Margin="2" SelectionMode="Single" SelectionChanged="AppendSelectedSection">
+            <ListView Grid.Row="1" x:Name="selectedSectionsListView" d:ItemsSource='{d:SampleData}' Margin="2" SelectionMode="Single" SelectionChanged="AppendSelectedSection" SelectedIndex="0">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Name}" />
