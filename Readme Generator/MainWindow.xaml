@@ -4,10 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Readme_Generator"
-        xmlns:models="clr-namespace:Readme_Generator.Models"
+        xmlns:models="clr-namespace:Readme_Generator.Models" xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
         Title="Readme Generator" Height="450" Width="800"
         Closing="SaveData">
+    <Window.Resources>
+        <models:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+    </Window.Resources>
     <Grid Margin="4">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
@@ -41,9 +44,22 @@
             <ListView Grid.Row="1" x:Name="selectedSectionsListView" d:ItemsSource='{d:SampleData}' Margin="2" SelectionMode="Single" SelectionChanged="AppendSelectedSection" ScrollViewer.CanContentScroll="False" SelectedIndex="0">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding Name}" />
+                        <Grid Margin="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="auto" />
+                            </Grid.ColumnDefinitions>
+                            
+                            <TextBlock Text="{Binding Name}" />
+                            <iconPacks:PackIconBootstrapIcons Grid.Column="1" Kind="ChatLeftText" Foreground="Teal" Visibility="{Binding Path=IsSelected, Converter={StaticResource BoolToVisibilityConverter}, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}}}"/>
+                        </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
             </ListView>
         </Grid>
         
@@ -60,7 +76,7 @@
             <ListView x:Name="allSectionsListView" Grid.Row="1" d:ItemsSource='{d:SampleData}' Margin="2" SelectionMode="Single" SelectionChanged="AddSectionToReadme" ScrollViewer.CanContentScroll="False">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding Name}" />
+                        <TextBlock Text="{Binding Name}" Margin="2" />
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
