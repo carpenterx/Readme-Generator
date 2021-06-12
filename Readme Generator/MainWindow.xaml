@@ -38,7 +38,7 @@
             </Grid.RowDefinitions>
             
             <Label Content="Readme template"/>
-            <ListView Grid.Row="1" x:Name="selectedSectionsListView" d:ItemsSource='{d:SampleData}' Margin="2" SelectionMode="Single" SelectionChanged="AppendSelectedSection" SelectedIndex="0">
+            <ListView Grid.Row="1" x:Name="selectedSectionsListView" d:ItemsSource='{d:SampleData}' Margin="2" SelectionMode="Single" SelectionChanged="AppendSelectedSection" ScrollViewer.CanContentScroll="False" SelectedIndex="0">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Name}" />
@@ -57,7 +57,7 @@
             </Grid.RowDefinitions>
 
             <Label Content="All sections"/>
-            <ListView x:Name="allSectionsListView" Grid.Row="1" d:ItemsSource='{d:SampleData}' Margin="2" SelectionMode="Single" SelectionChanged="AddSectionToReadme">
+            <ListView x:Name="allSectionsListView" Grid.Row="1" d:ItemsSource='{d:SampleData}' Margin="2" SelectionMode="Single" SelectionChanged="AddSectionToReadme" ScrollViewer.CanContentScroll="False">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Name}" />
