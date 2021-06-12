@@ -31,6 +31,8 @@ A simple application for generating readme files inspired by [readme.so](https:/
 - [x] the readme output should probably not be editable
 - [ ] maybe allow creating new readme templates from the main page
 - [ ] maybe add a readme importing option that generates a section from each heading and has the text between as a body
+- [ ] maybe make the selection wrapped by <kbd> tags always be uppercase
+- [ ] maybe add a way to declare a basic item for a section (for example, a task item for the roadmap section. Maybe make it so that this basic item gets expanded by tab completion
 
 ## Controls
 
