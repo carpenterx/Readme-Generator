@@ -66,35 +66,67 @@ namespace Readme_Generator
                 
                 if (snippetMode)
                 {
-                    FindNextMatch(sectionTxt);
+                    //FindNextPlaceholder(sectionTxt);
+                    FindNextPlaceholderOrSection(sectionTxt);
                     e.Handled = true;
                 }
             }
         }
 
-        private void FindNextMatch(TextBox textBox)
+        private void FindNextPlaceholder(TextBox textBox)
         {
             try
             {
-                Regex rgx = new Regex(@"\$.+?\$");
-                string testString = textBox.Text;
+                Match match = GetPlaceholderMatch(textBox.Text);
 
-                MatchCollection matches = rgx.Matches(testString);
-
-                if(matches.Count > 0)
+                if (match.Success)
                 {
-                    FocusTextBox(textBox, matches[0].Index, matches[0].Value.Length);
+                    FocusTextBox(textBox, match.Index, match.Value.Length);
                 }
                 else
                 {
                     FocusTextBox(textBox, textBox.Text.Length);
                 }
-                
             }
             catch (Exception exception)
             {
                 MessageBox.Show(exception.Message);
             }
+        }
+
+        private void FindNextPlaceholderOrSection(TextBox textBox)
+        {
+            try
+            {
+                Match match = GetPlaceholderMatch(textBox.Text);
+
+                if (match.Success)
+                {
+                    FocusTextBox(textBox, match.Index, match.Value.Length);
+                }
+                else
+                {
+                    if (selectedSectionsListView.SelectedIndex < selectedSectionsListView.Items.Count - 1)
+                    {
+                        selectedSectionsListView.SelectedIndex++;
+                    }
+                    else
+                    {
+                        selectedSectionsListView.SelectedIndex = 0;
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+        private Match GetPlaceholderMatch(string testString)
+        {
+            Regex rgx = new Regex(@"\$.+?\$");
+
+            return rgx.Match(testString);
         }
 
         private void FocusTextBox(TextBox textBox, int selectionStart, int selectionLength = 0)
@@ -247,7 +279,7 @@ namespace Readme_Generator
                 else
                 {
                     sectionTxt.DataContext = selectedSection;
-                    FindNextMatch(sectionTxt);
+                    FindNextPlaceholder(sectionTxt);
                 }
             }
         }
@@ -282,7 +314,7 @@ namespace Readme_Generator
                 else if (Keyboard.IsKeyDown(Key.LeftShift))
                 {
                     sectionTxt.DataContext = selectedSection;
-                    FindNextMatch(sectionTxt);
+                    FindNextPlaceholder(sectionTxt);
                 }
                 else
                 {
