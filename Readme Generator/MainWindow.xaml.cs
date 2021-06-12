@@ -119,6 +119,7 @@ namespace Readme_Generator
                     {
                         selectedSectionsListView.SelectedIndex = 0;
                     }
+                    selectedSectionsListView.ScrollIntoView(selectedSectionsListView.SelectedItem);
                 }
             }
             catch (Exception exception)
@@ -137,6 +138,7 @@ namespace Readme_Generator
             {
                 selectedSectionsListView.SelectedIndex = selectedSectionsListView.Items.Count - 1;
             }
+            selectedSectionsListView.ScrollIntoView(selectedSectionsListView.SelectedItem);
         }
 
         private Match GetPlaceholderMatch(string testString)
@@ -338,6 +340,7 @@ namespace Readme_Generator
                     if (selectedSectionsList.FirstOrDefault(i => i.Name == selectedSection.Name) == null)
                     {
                         selectedSectionsList.Add(new SectionTemplate(selectedSection));
+                        //selectedSectionsListView.ScrollIntoView(selectedSectionsListView.SelectedItem);
                     }
                 }
             }
