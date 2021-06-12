@@ -63,11 +63,16 @@ namespace Readme_Generator
             bool snippetMode = true;
             if (e.Key == Key.Tab)
             {
-                
                 if (snippetMode)
                 {
-                    //FindNextPlaceholder(sectionTxt);
-                    FindNextPlaceholderOrSection(sectionTxt);
+                    if (Keyboard.IsKeyDown(Key.LeftCtrl))
+                    {
+                        FindPrevPlaceholderOrSection(sectionTxt);
+                    }
+                    else
+                    {
+                        FindNextPlaceholderOrSection(sectionTxt);
+                    }
                     e.Handled = true;
                 }
             }
@@ -119,6 +124,18 @@ namespace Readme_Generator
             catch (Exception exception)
             {
                 MessageBox.Show(exception.Message);
+            }
+        }
+
+        private void FindPrevPlaceholderOrSection(TextBox textBox)
+        {
+            if (selectedSectionsListView.SelectedIndex > 0)
+            {
+                selectedSectionsListView.SelectedIndex--;
+            }
+            else
+            {
+                selectedSectionsListView.SelectedIndex = selectedSectionsListView.Items.Count - 1;
             }
         }
 
@@ -272,7 +289,7 @@ namespace Readme_Generator
         {
             if ((sender as ListView).SelectedItem is SectionTemplate selectedSection)
             {
-                if (Keyboard.IsKeyDown(Key.LeftCtrl))
+                if (Keyboard.IsKeyDown(Key.LeftAlt))
                 {
                     ((sender as ListView).ItemsSource as ObservableCollection<SectionTemplate>).Remove(selectedSection);
                 }
@@ -307,7 +324,7 @@ namespace Readme_Generator
         {
             if ((sender as ListView).SelectedItem is SectionTemplate selectedSection)
             {
-                if (Keyboard.IsKeyDown(Key.LeftCtrl))
+                if (Keyboard.IsKeyDown(Key.LeftAlt))
                 {
                     ((sender as ListView).ItemsSource as ObservableCollection<SectionTemplate>).Remove(selectedSection);
                 }
