@@ -9,7 +9,7 @@ A simple application for generating readme files inspired by [readme.so](https:/
 - [ ] add custom readme templates (readme templates created from the section templates)
 - [ ] maybe allow for section, readme and global variables (once the value is set in snippet mode, all occurences get replaced with the value)
 - [x] save section templates as yaml files
-- [ ] move to the next/prev section functionality
+- [x] move to the next/prev section functionality
 - [x] save readme (as yaml)
 - [ ] add window to create a new readme template (and display available readme templates)
 - [x] copy readme to clipboard
