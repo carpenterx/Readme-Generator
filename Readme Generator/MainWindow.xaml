@@ -24,14 +24,36 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2" Margin="2">
-            <Button Content="Italic" Width="80" Click="MakeItalic" Margin="2"/>
-            <Button Content="Bold" Width="80" Click="MakeBold" Margin="2"/>
-            <Button Content="Code" Width="80" Click="MakeCode" Margin="2"/>
-            <Button Content="Link" Width="80" Click="MakeLink" Margin="2"/>
-            <Button Content="Task" Width="80" Click="MakeTask" Margin="2"/>
-            <Button Content="Key" Width="80" Click="MakeKey" Margin="2"/>
-            <Button Content="Add Section" Width="80" Click="AddSectionClick" Margin="2"/>
-            <Button Content="Copy" Width="80" Click="CopyReadme" Margin="2"/>
+            <Button Width="30" Click="MakeItalic" Margin="2">
+                <iconPacks:PackIconBootstrapIcons Kind="TypeItalic" Margin="2" />
+            </Button>
+            <Button Width="30" Click="MakeBold" Margin="2">
+                <iconPacks:PackIconBootstrapIcons Kind="TypeBold" Margin="2" />
+            </Button>
+            <Button Width="30" Click="MakeCode" Margin="2">
+                <iconPacks:PackIconBootstrapIcons Kind="Braces" Margin="2" />
+            </Button>
+            <Button Width="30" Click="MakeLink" Margin="2">
+                <iconPacks:PackIconBootstrapIcons Kind="Link" Margin="2" />
+            </Button>
+            <Button Width="30" Click="MakeTask" Margin="2">
+                <iconPacks:PackIconBootstrapIcons Kind="Check2Square" Margin="2" />
+            </Button>
+            <Button Width="30" Click="MakeKey" Margin="2">
+                <iconPacks:PackIconBootstrapIcons Kind="Keyboard" Margin="2" />
+            </Button>
+            <Button Width="100" Click="AddSectionClick" Margin="2">
+                <StackPanel Orientation="Horizontal">
+                    <iconPacks:PackIconBootstrapIcons Kind="Plus" Margin="2" />
+                    <TextBlock Text="Add Section" Margin="2"/>
+                </StackPanel>
+            </Button>
+            <Button Width="70" Click="CopyReadme" Margin="2">
+                <StackPanel Orientation="Horizontal">
+                    <iconPacks:PackIconBootstrapIcons Kind="ClipboardPlus" Margin="2" />
+                    <TextBlock Text="Copy" Margin="2"/>
+                </StackPanel>
+            </Button>
         </StackPanel>
 
         <Grid Grid.Row="1" Margin="2">
