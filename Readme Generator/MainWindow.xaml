@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Readme_Generator"
         xmlns:models="clr-namespace:Readme_Generator.Models" xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
-        Title="Readme Generator" Height="450" Width="800"
+        Title="Readme Generator" Height="800" Width="1200"
         Closing="SaveData">
     <Window.Resources>
         <models:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
@@ -20,10 +20,10 @@
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*" />
-            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="6*" />
         </Grid.ColumnDefinitions>
 
-        <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2" Margin="2">
+        <StackPanel Orientation="Horizontal" Grid.Column="1" Margin="2">
             <Button Width="30" Click="MakeItalic" Margin="2">
                 <iconPacks:PackIconBootstrapIcons Kind="TypeItalic" Margin="2" />
             </Button>
