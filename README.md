@@ -36,9 +36,9 @@ A simple application for generating readme files inspired by [readme.so](https:/
 
 ## Controls
 
-- <kbd>CLICK</kbd> : on readme template item to edit it
-- <kbd>CLICK</kbd> : on all sections item to add section to readme template
-- <kbd>TAB</kbd> : to select the first placeholder text, or jump to the next section
-- <kbd>LEFT CTRL</kbd> + <kbd>TAB</kbd> : to go to the previous section
-- <kbd>LEFT SHIFT</kbd> + <kbd>CLICK</kbd> : on all sections item to edit it
-- <kbd>LEFT ALT</kbd> + <kbd>CLICK</kbd> : on a list item to delete it
+- <kbd>CLICK</kbd> on readme template item to edit it
+- <kbd>CLICK</kbd> on all sections item to add section to readme template
+- <kbd>TAB</kbd> to select the first placeholder text, or jump to the next section
+- <kbd>LEFT CTRL</kbd> + <kbd>TAB</kbd> to go to the previous section
+- <kbd>LEFT SHIFT</kbd> + <kbd>CLICK</kbd> on all sections item to edit it
+- <kbd>LEFT ALT</kbd> + <kbd>CLICK</kbd> on a list item to delete it
