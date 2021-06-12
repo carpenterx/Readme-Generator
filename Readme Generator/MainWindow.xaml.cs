@@ -357,6 +357,18 @@ namespace Readme_Generator
 
         private void CopyReadme(object sender, RoutedEventArgs e)
         {
+            CopyReadmeToClipboard();
+        }
+
+        private void CopyReadmeToClipboard()
+        {
+            Match match = GetPlaceholderMatch(readmeTxt.Text);
+
+            if (match.Success)
+            {
+                MessageBox.Show("Readme still contains placeholders", "Warning", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
+
             Clipboard.SetText(readmeTxt.Text);
         }
     }
