@@ -33,6 +33,8 @@ A simple application for generating readme files inspired by [readme.so](https:/
 - [ ] maybe add a readme importing option that generates a section from each heading and has the text between as a body
 - [ ] maybe make the selection wrapped by `<kbd>` tags always be uppercase
 - [ ] maybe add a way to declare a basic item for a section (for example, a task item for the roadmap section. Maybe make it so that this basic item gets expanded by tab completion
+- [ ] maybe show a list of all the found placeholder values and an input field next to them for their desired replacements
+- [ ] maybe <kbd>LEFT CTRL</kbd> + <kbd>ENTER</kbd> could repeat the body without the header (basically automatically getting a basic item expansion)
 
 ## Controls
 
