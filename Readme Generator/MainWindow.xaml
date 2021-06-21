@@ -119,7 +119,11 @@
         </StackPanel>
 
         <ListView Grid.Row="1" Grid.Column="2" x:Name="snippetsListView" d:ItemsSource='{d:SampleData}' Margin="2" SelectionMode="Single" SelectionChanged="PasteSnippet" ScrollViewer.CanContentScroll="False" SelectedIndex="0">
-
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}" ToolTip="{Binding Value}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
         </ListView>
     </Grid>
 </Window>

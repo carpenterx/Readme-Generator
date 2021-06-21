@@ -387,5 +387,10 @@ namespace Readme_Generator
 
             Clipboard.SetText(readmeTxt.Text);
         }
+
+        private void PasteSnippet(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
