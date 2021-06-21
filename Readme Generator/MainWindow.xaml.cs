@@ -289,12 +289,15 @@ namespace Readme_Generator
 
         private void SelectSectionFromReadmeSections(object sender, SelectionChangedEventArgs e)
         {
-            if ((sender as ListView).SelectedItem is SectionTemplate selectedSection)
+            ListView listView = sender as ListView;
+            if (listView.SelectedItem is SectionTemplate selectedSection)
             {
                 if (Keyboard.IsKeyDown(Key.LeftAlt))
                 {
                     // Delete
-                    ((sender as ListView).ItemsSource as ObservableCollection<SectionTemplate>).Remove(selectedSection);
+                    (listView.ItemsSource as ObservableCollection<SectionTemplate>).Remove(selectedSection);
+                    sectionTxt.DataContext = null;
+                    UpdateReadmeOutput();
                 }
                 else
                 {
@@ -350,7 +353,12 @@ namespace Readme_Generator
             }
         }
 
-        private void UpdateReadmeOutput(object sender, TextChangedEventArgs e)
+        private void TextChangedHandler(object sender, TextChangedEventArgs e)
+        {
+            UpdateReadmeOutput();
+        }
+
+        private void UpdateReadmeOutput()
         {
             StringBuilder readmeBuilder = new();
 
