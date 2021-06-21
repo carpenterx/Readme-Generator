@@ -348,6 +348,7 @@ namespace Readme_Generator
                     if (selectedSectionsList.FirstOrDefault(i => i.Name == selectedSection.Name) == null)
                     {
                         selectedSectionsList.Add(new SectionTemplate(selectedSection));
+                        sectionTxt.DataContext = selectedSection;
                     }
                 }
             }
