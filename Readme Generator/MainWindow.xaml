@@ -113,17 +113,22 @@
                     <TextBlock Text="Add Snippet" Margin="2"/>
                 </StackPanel>
             </Button>
-            <Button Width="30" Margin="2" ToolTip="Delete Snippet">
+            <Button Width="30" Margin="2" ToolTip="Delete Snippet" Click="DeleteSnippetClick">
                 <iconPacks:PackIconBootstrapIcons Kind="Trash" Margin="2" />
             </Button>
         </StackPanel>
 
-        <ListView Grid.Row="1" Grid.Column="2" x:Name="snippetsListView" d:ItemsSource='{d:SampleData}' Margin="2" SelectionMode="Single" SelectionChanged="PasteSnippet" ScrollViewer.CanContentScroll="False" SelectedIndex="0">
+        <ListView Grid.Row="1" Grid.Column="2" x:Name="snippetsListView" d:ItemsSource='{d:SampleData}' Margin="2" SelectionMode="Single" ScrollViewer.CanContentScroll="False" SelectedIndex="0">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Name}" ToolTip="{Binding Value}"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <EventSetter Event="PreviewMouseLeftButtonDown" Handler="SnippetClickedHandler" />
+                </Style>
+            </ListView.ItemContainerStyle>
         </ListView>
     </Grid>
 </Window>

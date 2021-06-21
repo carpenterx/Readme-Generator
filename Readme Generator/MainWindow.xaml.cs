@@ -392,9 +392,35 @@ namespace Readme_Generator
             Clipboard.SetText(readmeTxt.Text);
         }
 
-        private void PasteSnippet(object sender, SelectionChangedEventArgs e)
+        private void InsertSnippet(TextBox textBox, string snippet)
         {
-
+            if (textBox.SelectionLength > 0)
+            {
+                string oldText = textBox.Text;
+                int selectionStartIndex = textBox.SelectionStart;
+                int selectionLength = textBox.SelectionLength;
+                int startCharsLength = snippet.Length;
+                StringBuilder newTextBuilder = new();
+                newTextBuilder
+                    .Append(oldText.Substring(0, selectionStartIndex))
+                    .Append(snippet)
+                    .Append(oldText.Substring(selectionStartIndex + selectionLength));
+                textBox.Text = newTextBuilder.ToString();
+                FocusTextBox(textBox, selectionStartIndex + startCharsLength, selectionLength);
+            }
+            else
+            {
+                string oldText = textBox.Text;
+                int caretIndex = textBox.CaretIndex;
+                int startCharsLength = snippet.Length;
+                StringBuilder newTextBuilder = new();
+                newTextBuilder
+                    .Append(oldText.Substring(0, caretIndex))
+                    .Append(snippet)
+                    .Append(oldText.Substring(caretIndex));
+                textBox.Text = newTextBuilder.ToString();
+                FocusTextBox(textBox, caretIndex + startCharsLength);
+            }
         }
 
         private void AddSnippetClick(object sender, RoutedEventArgs e)
@@ -404,6 +430,28 @@ namespace Readme_Generator
             if (snippetWindow.ShowDialog() == true)
             {
                 snippetsList.Add(snippetWindow.GetSnippet());
+            }
+        }
+
+        private void SnippetClickedHandler(object sender, MouseButtonEventArgs e)
+        {
+            ListViewItem item = sender as ListViewItem;
+            Snippet snippet = item.DataContext as Snippet;
+            if (Keyboard.IsKeyDown(Key.LeftCtrl))
+            {
+                snippetsList.Remove(snippet);
+            }
+            else
+            {
+                InsertSnippet(sectionTxt, snippet.Value);
+            }
+        }
+
+        private void DeleteSnippetClick(object sender, RoutedEventArgs e)
+        {
+            if (snippetsListView.SelectedItem is Snippet selectedSnippet)
+            {
+                snippetsList.Remove(selectedSnippet);
             }
         }
     }
