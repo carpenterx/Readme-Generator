@@ -85,7 +85,7 @@
             </ListView>
         </Grid>
 
-        <TextBox Grid.Row="1" Grid.Column="1" x:Name="sectionTxt" Text="{Binding Body, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="True" TextWrapping="Wrap" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" AcceptsTab="True" IsInactiveSelectionHighlightEnabled="True" PreviewKeyDown="TestTab" Padding="2" Margin="4" TextChanged="TextChangedHandler"/>
+        <TextBox Grid.Row="1" Grid.Column="1" x:Name="sectionTxt" Text="{Binding Body, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="True" TextWrapping="Wrap" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" AcceptsTab="True" IsInactiveSelectionHighlightEnabled="True" PreviewKeyDown="TestTab" Padding="2" Margin="4" TextChanged="TextChangedHandler" FontSize="14"/>
 
         <Grid Grid.Row="2" Margin="2">
             <Grid.RowDefinitions>
@@ -103,6 +103,6 @@
             </ListView>
         </Grid>
 
-        <TextBox Grid.Row="2" Grid.Column="1" x:Name="readmeTxt" Text="public $type$ $property$ { get; set; }$end$" AcceptsReturn="True" TextWrapping="Wrap" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" AcceptsTab="True" IsInactiveSelectionHighlightEnabled="True" IsReadOnly="True" Padding="2" Margin="4"/>
+        <TextBox Grid.Row="2" Grid.Column="1" x:Name="readmeTxt" Text="public $type$ $property$ { get; set; }$end$" AcceptsReturn="True" TextWrapping="Wrap" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" AcceptsTab="True" IsInactiveSelectionHighlightEnabled="True" IsReadOnly="True" Padding="2" Margin="4" FontSize="14"/>
     </Grid>
 </Window>
