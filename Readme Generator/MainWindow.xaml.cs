@@ -287,16 +287,18 @@ namespace Readme_Generator
             }
         }
 
-        private void AppendSelectedSection(object sender, SelectionChangedEventArgs e)
+        private void SelectSectionFromReadmeSections(object sender, SelectionChangedEventArgs e)
         {
             if ((sender as ListView).SelectedItem is SectionTemplate selectedSection)
             {
                 if (Keyboard.IsKeyDown(Key.LeftAlt))
                 {
+                    // Delete
                     ((sender as ListView).ItemsSource as ObservableCollection<SectionTemplate>).Remove(selectedSection);
                 }
                 else
                 {
+                    // Edit/display
                     sectionTxt.DataContext = selectedSection;
                     FindNextPlaceholder(sectionTxt);
                 }
@@ -322,25 +324,27 @@ namespace Readme_Generator
             File.WriteAllText(filePath, yaml);
         }
 
-        private void AddSectionToReadme(object sender, SelectionChangedEventArgs e)
+        private void SelectSectionFromAllSections(object sender, SelectionChangedEventArgs e)
         {
             if ((sender as ListView).SelectedItem is SectionTemplate selectedSection)
             {
                 if (Keyboard.IsKeyDown(Key.LeftAlt))
                 {
+                    // Delete
                     ((sender as ListView).ItemsSource as ObservableCollection<SectionTemplate>).Remove(selectedSection);
                 }
                 else if (Keyboard.IsKeyDown(Key.LeftShift))
                 {
+                    // Edit/display
                     sectionTxt.DataContext = selectedSection;
                     FindNextPlaceholder(sectionTxt);
                 }
                 else
                 {
+                    // Add
                     if (selectedSectionsList.FirstOrDefault(i => i.Name == selectedSection.Name) == null)
                     {
                         selectedSectionsList.Add(new SectionTemplate(selectedSection));
-                        //selectedSectionsListView.ScrollIntoView(selectedSectionsListView.SelectedItem);
                     }
                 }
             }
