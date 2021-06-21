@@ -21,8 +21,10 @@ namespace Readme_Generator
         private static readonly string APPLICATION_FOLDER = "Readme Generator";
         private static readonly string SECTION_TEMPLATES_FILE = "section templates.yml";
         private static readonly string README_TEMPLATE_FILE = "readme template.yml";
+        private static readonly string SNIPPETS_FILE = "snippets.yml";
         private readonly string sectionTemplatesPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), APPLICATION_FOLDER, SECTION_TEMPLATES_FILE);
         private readonly string readmeTemplatePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), APPLICATION_FOLDER, README_TEMPLATE_FILE);
+        private readonly string snippetsPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), APPLICATION_FOLDER, SNIPPETS_FILE);
 
         private ObservableCollection<SectionTemplate> allSectionsList = new();
         private ObservableCollection<SectionTemplate> selectedSectionsList = new();
@@ -35,7 +37,6 @@ namespace Readme_Generator
 
             LoadSectionTemplates();
 
-            snippetsListView.ItemsSource = snippetsList;
         }
 
         private void LoadSectionTemplates()
@@ -322,6 +323,7 @@ namespace Readme_Generator
 
             SaveFileToYaml(sectionTemplatesPath, allSectionsList);
             SaveFileToYaml(readmeTemplatePath, selectedSectionsList);
+            SaveFileToYaml(snippetsPath, snippetsList);
         }
 
         private void SaveFileToYaml<T>(string filePath, ObservableCollection<T> list)
