@@ -37,6 +37,7 @@ namespace Readme_Generator
 
             LoadSectionTemplates();
 
+            LoadSnippets();
         }
 
         private void LoadSectionTemplates()
@@ -46,6 +47,13 @@ namespace Readme_Generator
 
             allSectionsListView.ItemsSource = allSectionsList;
             selectedSectionsListView.ItemsSource = selectedSectionsList;
+        }
+
+        private void LoadSnippets()
+        {
+            snippetsList = LoadFileToList<Snippet>(snippetsPath);
+
+            snippetsListView.ItemsSource = snippetsList;
         }
 
         private ObservableCollection<T> LoadFileToList<T>(string filePath)
