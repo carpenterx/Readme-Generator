@@ -10,5 +10,11 @@
             Name = name;
             Value = value;
         }
+
+        public Snippet()
+        {
+            Name = "";
+            Value = "";
+        }
     }
 }
