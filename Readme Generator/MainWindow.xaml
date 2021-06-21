@@ -24,22 +24,22 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Orientation="Horizontal" Grid.Column="1" Margin="2">
-            <Button Width="30" Click="MakeItalic" Margin="2">
+            <Button Width="30" Click="MakeItalic" Margin="2" ToolTip="Italic">
                 <iconPacks:PackIconBootstrapIcons Kind="TypeItalic" Margin="2" />
             </Button>
-            <Button Width="30" Click="MakeBold" Margin="2">
+            <Button Width="30" Click="MakeBold" Margin="2" ToolTip="Bold">
                 <iconPacks:PackIconBootstrapIcons Kind="TypeBold" Margin="2" />
             </Button>
-            <Button Width="30" Click="MakeCode" Margin="2">
+            <Button Width="30" Click="MakeCode" Margin="2" ToolTip="Code">
                 <iconPacks:PackIconBootstrapIcons Kind="Braces" Margin="2" />
             </Button>
-            <Button Width="30" Click="MakeLink" Margin="2">
+            <Button Width="30" Click="MakeLink" Margin="2" ToolTip="Link">
                 <iconPacks:PackIconBootstrapIcons Kind="Link" Margin="2" />
             </Button>
-            <Button Width="30" Click="MakeTask" Margin="2">
+            <Button Width="30" Click="MakeTask" Margin="2" ToolTip="To Do">
                 <iconPacks:PackIconBootstrapIcons Kind="Check2Square" Margin="2" />
             </Button>
-            <Button Width="30" Click="MakeKey" Margin="2">
+            <Button Width="30" Click="MakeKey" Margin="2" ToolTip="Key">
                 <iconPacks:PackIconBootstrapIcons Kind="Keyboard" Margin="2" />
             </Button>
             <Button Width="100" Click="AddSectionClick" Margin="2">
