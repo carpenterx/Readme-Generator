@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Readme_Generator.Windows"
         mc:Ignorable="d"
-        Title="Add Snippet" Height="450" Width="400">
+        Title="Add Snippet" Height="260" Width="400">
     <Grid Margin="4">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto" />
@@ -19,11 +19,11 @@
         </Grid.RowDefinitions>
 
         <Label Content="Title: " Margin="2"/>
-        <TextBox Grid.Column="1" d:Text="Snippet Title" Padding="2" Margin="2"/>
+        <TextBox x:Name="titleTxt" Grid.Column="1" d:Text="Snippet Title" Padding="2" Margin="2"/>
 
         <Label Grid.Row="1" Content="Content: " Margin="2"/>
-        <TextBox Grid.Row="1" Grid.Column="1" d:Text="Snippet Content" Height="140" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Padding="2" Margin="2"/>
+        <TextBox x:Name="contentTxt" Grid.Row="1" Grid.Column="1" d:Text="Snippet Content" Height="140" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Padding="2" Margin="2"/>
 
-        <Button Grid.Row="2" Grid.ColumnSpan="2" Content="Add" Width="60" Padding="2" Margin="2"/>
+        <Button Grid.Row="2" Grid.ColumnSpan="2" Content="Add" Width="60" Click="AddSectionClick"  Padding="2" Margin="2"/>
     </Grid>
 </Window>

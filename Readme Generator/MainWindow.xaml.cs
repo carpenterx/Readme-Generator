@@ -27,11 +27,15 @@ namespace Readme_Generator
         private ObservableCollection<SectionTemplate> allSectionsList = new();
         private ObservableCollection<SectionTemplate> selectedSectionsList = new();
 
+        private ObservableCollection<Snippet> snippetsList = new();
+
         public MainWindow()
         {
             InitializeComponent();
 
             LoadSectionTemplates();
+
+            snippetsListView.ItemsSource = snippetsList;
         }
 
         private void LoadSectionTemplates()
@@ -391,6 +395,16 @@ namespace Readme_Generator
         private void PasteSnippet(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void AddSnippetClick(object sender, RoutedEventArgs e)
+        {
+            SnippetWindow snippetWindow = new();
+            snippetWindow.Owner = this;
+            if (snippetWindow.ShowDialog() == true)
+            {
+                snippetsList.Add(snippetWindow.GetSnippet());
+            }
         }
     }
 }

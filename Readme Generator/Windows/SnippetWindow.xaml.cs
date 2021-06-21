@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Readme_Generator.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static System.Collections.Specialized.BitVector32;
 
 namespace Readme_Generator.Windows
 {
@@ -19,9 +21,23 @@ namespace Readme_Generator.Windows
     /// </summary>
     public partial class SnippetWindow : Window
     {
+        private Snippet snippet;
+
         public SnippetWindow()
         {
             InitializeComponent();
+        }
+
+        public Snippet GetSnippet()
+        {
+            return snippet;
+}
+
+        private void AddSectionClick(object sender, RoutedEventArgs e)
+        {
+            snippet = new Snippet(titleTxt.Text, contentTxt.Text);
+            GetWindow(this).DialogResult = true;
+            GetWindow(this).Close();
         }
     }
 }
