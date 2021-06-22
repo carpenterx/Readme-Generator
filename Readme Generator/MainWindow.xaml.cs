@@ -10,6 +10,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using YamlDotNet.Serialization;
 using System.Linq;
+using Microsoft.Win32;
 
 namespace Readme_Generator
 {
@@ -462,6 +463,20 @@ namespace Readme_Generator
             if (snippetsListView.SelectedItem is Snippet selectedSnippet)
             {
                 snippetsList.Remove(selectedSnippet);
+            }
+        }
+
+        private void SaveReadmeTemplateClick(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog dlg = new SaveFileDialog();
+            dlg.Title = "Save Readme Template";
+            dlg.FileName = "Readme template"; // Default file name
+            dlg.DefaultExt = ".yml"; // Default file extension
+            dlg.Filter = "Yaml documents (.yml)|*.yml"; // Filter files by extension
+
+            if (dlg.ShowDialog() == true)
+            {
+                SaveFileToYaml(dlg.FileName, selectedSectionsList);
             }
         }
     }

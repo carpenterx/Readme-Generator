@@ -24,6 +24,10 @@
             <ColumnDefinition Width="auto" />
         </Grid.ColumnDefinitions>
 
+        <StackPanel Orientation="Horizontal" Margin="2">
+            <Button Width="40" Content="Save" Click="SaveReadmeTemplateClick" Margin="2"/>
+        </StackPanel>
+        
         <StackPanel Orientation="Horizontal" Grid.Column="1" Margin="2">
             <Button Width="30" Click="MakeItalic" Margin="2" ToolTip="Italic">
                 <iconPacks:PackIconBootstrapIcons Kind="TypeItalic" Margin="2" />
