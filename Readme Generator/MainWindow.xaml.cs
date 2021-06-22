@@ -479,5 +479,17 @@ namespace Readme_Generator
                 SaveFileToYaml(dlg.FileName, selectedSectionsList);
             }
         }
+
+        private void LoadReadmeTemplateClick(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "Load Readme Template";
+            openFileDialog.Filter = "Yaml documents (.yml)|*.yml";
+            if (openFileDialog.ShowDialog() == true)
+            {
+                selectedSectionsList = LoadFileToList<SectionTemplate>(openFileDialog.FileName);
+                selectedSectionsListView.ItemsSource = selectedSectionsList;
+            }
+        }
     }
 }
