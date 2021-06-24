@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="Section Window"
         Height="450" Width="800"
+        ResizeMode="NoResize"
         WindowStartupLocation="CenterOwner">
     <Grid Margin="2">
         <Grid.RowDefinitions>
