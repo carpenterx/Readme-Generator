@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Readme_Generator.Windows"
         mc:Ignorable="d"
-        Title="Add Snippet" Height="260" Width="400">
+        Title="Add Snippet"
+        Height="260" Width="400"
+        WindowStartupLocation="CenterOwner">
     <Grid Margin="4">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto" />

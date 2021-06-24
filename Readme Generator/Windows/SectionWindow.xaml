@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Readme_Generator.Windows"
         mc:Ignorable="d"
-        Title="Section Window" Height="450" Width="800">
+        Title="Section Window"
+        Height="450" Width="800"
+        WindowStartupLocation="CenterOwner">
     <Grid Margin="2">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
