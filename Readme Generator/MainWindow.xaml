@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Readme_Generator"
+        xmlns:dd="urn:gong-wpf-dragdrop"
         xmlns:models="clr-namespace:Readme_Generator.Models" xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
         Title="Readme Generator" Height="800" Width="1200"
@@ -69,7 +70,7 @@
             </Grid.RowDefinitions>
             
             <Label Content="Readme template" Margin="2"/>
-            <ListView Grid.Row="1" x:Name="selectedSectionsListView" d:ItemsSource='{d:SampleData}' Margin="2" SelectionMode="Single" SelectionChanged="SelectSectionFromReadmeSections" ScrollViewer.CanContentScroll="False" SelectedIndex="0">
+            <ListView Grid.Row="1" x:Name="selectedSectionsListView" d:ItemsSource='{d:SampleData}' Margin="2" SelectionMode="Single" SelectionChanged="SelectSectionFromReadmeSections" ScrollViewer.CanContentScroll="False" SelectedIndex="0" dd:DragDrop.IsDragSource="True" dd:DragDrop.IsDropTarget="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Grid Margin="2">
@@ -100,7 +101,7 @@
             </Grid.RowDefinitions>
 
             <Label Content="All sections" Margin="2"/>
-            <ListView x:Name="allSectionsListView" Grid.Row="1" d:ItemsSource='{d:SampleData}' Margin="2" SelectionMode="Single" SelectionChanged="SelectSectionFromAllSections" ScrollViewer.CanContentScroll="False">
+            <ListView x:Name="allSectionsListView" Grid.Row="1" d:ItemsSource='{d:SampleData}' Margin="2" SelectionMode="Single" SelectionChanged="SelectSectionFromAllSections" ScrollViewer.CanContentScroll="False" dd:DragDrop.IsDragSource="True" dd:DragDrop.IsDropTarget="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Name}" Margin="2" />
