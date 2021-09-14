@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="gong-wpf-dragdrop" Version="2.3.2" />
+    <PackageReference Include="MahApps.Metro" Version="2.4.7" />
     <PackageReference Include="MahApps.Metro.IconPacks.BootstrapIcons" Version="4.8.0" />
     <PackageReference Include="YamlDotNet" Version="11.2.1" />
   </ItemGroup>

@@ -11,13 +11,15 @@ using System.Windows.Input;
 using YamlDotNet.Serialization;
 using System.Linq;
 using Microsoft.Win32;
+using MahApps.Metro.Controls;
+using ControlzEx.Theming;
 
 namespace Readme_Generator
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : MetroWindow
     {
         private static readonly string APPLICATION_FOLDER = "Readme Generator";
         private static readonly string SECTION_TEMPLATES_FILE = "section templates.yml";
@@ -489,6 +491,19 @@ namespace Readme_Generator
             {
                 selectedSectionsList = LoadFileToList<SectionTemplate>(openFileDialog.FileName);
                 selectedSectionsListView.ItemsSource = selectedSectionsList;
+            }
+        }
+
+        private void ChangeTheme(object sender, RoutedEventArgs e)
+        {
+            ToggleSwitch themeToggle = (ToggleSwitch)sender;
+if (themeToggle.IsOn)
+{
+                ThemeManager.Current.ChangeTheme(Application.Current, "Dark.Teal");
+            }
+            else
+            {
+                ThemeManager.Current.ChangeTheme(Application.Current, "Light.Teal");
             }
         }
     }

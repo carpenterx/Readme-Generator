@@ -1,4 +1,5 @@
-﻿using Readme_Generator.Models;
+﻿using MahApps.Metro.Controls;
+using Readme_Generator.Models;
 using System.Windows;
 
 namespace Readme_Generator.Windows
@@ -6,7 +7,7 @@ namespace Readme_Generator.Windows
     /// <summary>
     /// Interaction logic for SectionWindow.xaml
     /// </summary>
-    public partial class SectionWindow : Window
+    public partial class SectionWindow : MetroWindow
     {
         private SectionTemplate section;
 
