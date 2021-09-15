@@ -13,6 +13,7 @@ using System.Linq;
 using Microsoft.Win32;
 using MahApps.Metro.Controls;
 using ControlzEx.Theming;
+using Readme_Generator.Properties;
 
 namespace Readme_Generator
 {
@@ -335,6 +336,8 @@ namespace Readme_Generator
             SaveFileToYaml(sectionTemplatesPath, allSectionsList);
             SaveFileToYaml(readmeTemplatePath, selectedSectionsList);
             SaveFileToYaml(snippetsPath, snippetsList);
+
+            Settings.Default.Save();
         }
 
         private void SaveFileToYaml<T>(string filePath, ObservableCollection<T> list)

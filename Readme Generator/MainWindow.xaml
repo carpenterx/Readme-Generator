@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Readme_Generator"
+        xmlns:properties="clr-namespace:Readme_Generator.Properties"
         xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:dd="urn:gong-wpf-dragdrop"
         xmlns:models="clr-namespace:Readme_Generator.Models" xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
@@ -65,7 +66,7 @@
                 </StackPanel>
             </Button>
             <Label Content="Dark mode" VerticalAlignment="Center" Margin="2"/>
-            <mah:ToggleSwitch Toggled="ChangeTheme" />
+            <mah:ToggleSwitch Toggled="ChangeTheme" IsOn="{Binding Source={x:Static properties:Settings.Default}, Path=UseDarkMode, Mode=TwoWay}" />
         </StackPanel>
 
         <Grid Grid.Row="1" Margin="2">
