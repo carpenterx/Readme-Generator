@@ -388,7 +388,8 @@ namespace Readme_Generator
                 readmeBuilder.AppendLine(section.Body).AppendLine();
             }
 
-            readmeTxt.Text = readmeBuilder.ToString();
+            //readmeTxt.Text = readmeBuilder.ToString();
+            readmeMd.Markdown = readmeBuilder.ToString();
         }
 
         private void CopyReadme(object sender, RoutedEventArgs e)
@@ -398,14 +399,16 @@ namespace Readme_Generator
 
         private void CopyReadmeToClipboard()
         {
-            Match match = GetPlaceholderMatch(readmeTxt.Text);
+            //Match match = GetPlaceholderMatch(readmeTxt.Text);
+            Match match = GetPlaceholderMatch(readmeMd.ToString());
 
             if (match.Success)
             {
                 MessageBox.Show("Readme still contains placeholders", "Warning", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
 
-            Clipboard.SetText(readmeTxt.Text);
+            //Clipboard.SetText(readmeTxt.Text);
+            Clipboard.SetText(readmeMd.ToString());
         }
 
         private void InsertSnippet(TextBox textBox, string snippet)

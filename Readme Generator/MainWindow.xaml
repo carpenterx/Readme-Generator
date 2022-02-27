@@ -5,9 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Readme_Generator"
         xmlns:properties="clr-namespace:Readme_Generator.Properties"
-        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:models="clr-namespace:Readme_Generator.Models"
         xmlns:dd="urn:gong-wpf-dragdrop"
-        xmlns:models="clr-namespace:Readme_Generator.Models" xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:markdig="clr-namespace:Markdig.Wpf;assembly=Markdig.Wpf"
         mc:Ignorable="d"
         TitleCharacterCasing="Normal"
         Title="Readme Generator"
@@ -116,7 +118,8 @@
             </ListView>
         </Grid>
 
-        <TextBox Grid.Row="2" Grid.Column="1" x:Name="readmeTxt" Text="public $type$ $property$ { get; set; }$end$" AcceptsReturn="True" TextWrapping="Wrap" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" AcceptsTab="True" IsInactiveSelectionHighlightEnabled="True" IsReadOnly="True" Padding="2" Margin="2" FontSize="14"/>
+        <!--<TextBox Grid.Row="2" Grid.Column="1" x:Name="readmeTxt" Text="public $type$ $property$ { get; set; }$end$" AcceptsReturn="True" TextWrapping="Wrap" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" AcceptsTab="True" IsInactiveSelectionHighlightEnabled="True" IsReadOnly="True" Padding="2" Margin="2" FontSize="14"/>-->
+        <markdig:MarkdownViewer Grid.Row="2" Grid.Column="1" x:Name="readmeMd"/>
 
         <StackPanel Orientation="Horizontal" Grid.Column="2" Margin="2">
             <Button Grid.Column="2" Width="100" Click="AddSnippetClick" Margin="2">
