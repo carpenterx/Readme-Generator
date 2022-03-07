@@ -6,7 +6,7 @@
     <RootNamespace>Readme_Generator</RootNamespace>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>book_open_book_read_icon_186999 (1).ico</ApplicationIcon>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
   </PropertyGroup>
 
   <ItemGroup>

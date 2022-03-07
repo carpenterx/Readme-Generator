@@ -399,8 +399,15 @@ namespace Readme_Generator
 
         private void CopyReadmeToClipboard()
         {
+            StringBuilder readmeBuilder = new();
+
+            foreach (SectionTemplate section in selectedSectionsList)
+            {
+                readmeBuilder.AppendLine(section.Body).AppendLine();
+            }
+
             //Match match = GetPlaceholderMatch(readmeTxt.Text);
-            Match match = GetPlaceholderMatch(readmeMd.ToString());
+            Match match = GetPlaceholderMatch(readmeBuilder.ToString());
 
             if (match.Success)
             {
@@ -408,7 +415,7 @@ namespace Readme_Generator
             }
 
             //Clipboard.SetText(readmeTxt.Text);
-            Clipboard.SetText(readmeMd.ToString());
+            Clipboard.SetText(readmeBuilder.ToString());
         }
 
         private void InsertSnippet(TextBox textBox, string snippet)
