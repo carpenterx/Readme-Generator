@@ -2,6 +2,15 @@
 
 A simple application for generating readme files inspired by [readme.so](https://readme.so/)
 
+## Controls
+
+- <kbd>CLICK</kbd> on readme template item to edit it
+- <kbd>CLICK</kbd> on all sections item to add section to readme template
+- <kbd>TAB</kbd> to select the first placeholder text, or jump to the next section
+- <kbd>LEFT CTRL</kbd> + <kbd>TAB</kbd> to go to the previous section
+- <kbd>LEFT SHIFT</kbd> + <kbd>CLICK</kbd> on all sections item to edit it
+- <kbd>LEFT ALT</kbd> + <kbd>CLICK</kbd> on a list item to delete it
+
 ## Roadmap
 
 - [x] snippet mode (press tab to move to the next value, typing changes current placeholder text)
@@ -35,12 +44,3 @@ A simple application for generating readme files inspired by [readme.so](https:/
 - [ ] maybe add a way to declare a basic item for a section (for example, a task item for the roadmap section. Maybe make it so that this basic item gets expanded by tab completion
 - [ ] maybe show a list of all the found placeholder values and an input field next to them for their desired replacements
 - [ ] maybe <kbd>LEFT CTRL</kbd> + <kbd>ENTER</kbd> could repeat the body without the header (basically automatically getting a basic item expansion)
-
-## Controls
-
-- <kbd>CLICK</kbd> on readme template item to edit it
-- <kbd>CLICK</kbd> on all sections item to add section to readme template
-- <kbd>TAB</kbd> to select the first placeholder text, or jump to the next section
-- <kbd>LEFT CTRL</kbd> + <kbd>TAB</kbd> to go to the previous section
-- <kbd>LEFT SHIFT</kbd> + <kbd>CLICK</kbd> on all sections item to edit it
-- <kbd>LEFT ALT</kbd> + <kbd>CLICK</kbd> on a list item to delete it
