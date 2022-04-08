@@ -340,7 +340,7 @@ namespace Readme_Generator
             Settings.Default.Save();
         }
 
-        private void SaveFileToYaml<T>(string filePath, ObservableCollection<T> list)
+        private static void SaveFileToYaml<T>(string filePath, ObservableCollection<T> list)
         {
             var serializer = new SerializerBuilder().Build();
             var yaml = serializer.Serialize(list);
@@ -483,11 +483,13 @@ namespace Readme_Generator
 
         private void SaveReadmeTemplateClick(object sender, RoutedEventArgs e)
         {
-            SaveFileDialog dlg = new SaveFileDialog();
-            dlg.Title = "Save Readme Template";
-            dlg.FileName = "Readme template"; // Default file name
-            dlg.DefaultExt = ".yml"; // Default file extension
-            dlg.Filter = "Yaml documents (.yml)|*.yml"; // Filter files by extension
+            SaveFileDialog dlg = new()
+            {
+                Title = "Save Readme Template",
+                FileName = "Readme template", // Default file name
+                DefaultExt = ".yml", // Default file extension
+                Filter = "Yaml documents (.yml)|*.yml" // Filter files by extension
+            };
 
             if (dlg.ShowDialog() == true)
             {
@@ -497,9 +499,12 @@ namespace Readme_Generator
 
         private void LoadReadmeTemplateClick(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Title = "Load Readme Template";
-            openFileDialog.Filter = "Yaml documents (.yml)|*.yml";
+            OpenFileDialog openFileDialog = new()
+            {
+                Title = "Load Readme Template",
+                Filter = "Yaml documents (.yml)|*.yml"
+            };
+
             if (openFileDialog.ShowDialog() == true)
             {
                 selectedSectionsList = LoadFileToList<SectionTemplate>(openFileDialog.FileName);
@@ -510,8 +515,8 @@ namespace Readme_Generator
         private void ChangeTheme(object sender, RoutedEventArgs e)
         {
             ToggleSwitch themeToggle = (ToggleSwitch)sender;
-if (themeToggle.IsOn)
-{
+            if (themeToggle.IsOn)
+            {
                 ThemeManager.Current.ChangeTheme(Application.Current, "Dark.Teal");
             }
             else
@@ -522,7 +527,18 @@ if (themeToggle.IsOn)
 
         private void SaveSectionsClick(object sender, RoutedEventArgs e)
         {
+            SaveFileDialog dlg = new()
+            {
+                Title = "Save Sections",
+                FileName = "sections",
+                DefaultExt = ".yml",
+                Filter = "Yaml documents (.yml)|*.yml"
+            };
 
+            if (dlg.ShowDialog() == true)
+            {
+                SaveFileToYaml(dlg.FileName, allSectionsList);
+            }
         }
 
         private void LoadSectionsClick(object sender, RoutedEventArgs e)
