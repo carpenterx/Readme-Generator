@@ -2,6 +2,8 @@
 
 A simple application for generating readme files inspired by [readme.so](https://readme.so/)
 
+![Readme Generator screenshot](screenshots/main-screen.png)
+
 ## Controls
 
 - <kbd>CLICK</kbd> on readme template item to edit it
