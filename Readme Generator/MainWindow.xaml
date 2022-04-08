@@ -31,12 +31,12 @@
             <ColumnDefinition Width="auto" />
         </Grid.ColumnDefinitions>
 
-        <StackPanel Orientation="Horizontal" Margin="2">
+        <!--<StackPanel Orientation="Horizontal" Margin="2">
             <Button Width="60" Content="Load" Click="LoadReadmeTemplateClick" Margin="2"/>
             <Button Width="60" Content="Save" Click="SaveReadmeTemplateClick" Margin="2"/>
-        </StackPanel>
+        </StackPanel>-->
         
-        <StackPanel Orientation="Horizontal" Grid.Column="1" Margin="2">
+        <StackPanel Orientation="Horizontal" Grid.Column="1" Margin="2" HorizontalAlignment="Center">
             <Button Width="34" Click="MakeItalic" Margin="2" ToolTip="Italic">
                 <iconPacks:PackIconBootstrapIcons Kind="TypeItalic" Margin="2" />
             </Button>
@@ -55,12 +55,12 @@
             <Button Width="34" Click="MakeKey" Margin="2" ToolTip="Key">
                 <iconPacks:PackIconBootstrapIcons Kind="Keyboard" Margin="2" />
             </Button>
-            <Button Width="100" Click="AddSectionClick" Margin="2">
+            <!--<Button Width="100" Click="AddSectionClick" Margin="2">
                 <StackPanel Orientation="Horizontal">
                     <iconPacks:PackIconBootstrapIcons Kind="Plus" Margin="2" />
                     <TextBlock Text="Add Section" Margin="2"/>
                 </StackPanel>
-            </Button>
+            </Button>-->
             <Button Width="70" Click="CopyReadme" Margin="2">
                 <StackPanel Orientation="Horizontal">
                     <iconPacks:PackIconBootstrapIcons Kind="ClipboardPlus" Margin="2" />
@@ -77,7 +77,22 @@
                 <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
             
-            <Label Content="Readme template" Margin="2" FontSize="14"/>
+            <!--<Label Content="Readme template" Margin="2" FontSize="14"/>-->
+            <Grid Background="{mah:StaticResource MahApps.Brushes.Accent}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+
+                <Label Content="Readme template" Margin="2" FontSize="16"/>
+                <Button Grid.Column="1" Width="34" Click="SaveReadmeTemplateClick" Margin="4,4,0,4" Padding="2" ToolTip="Save Template">
+                    <iconPacks:PackIconBootstrapIcons Kind="Download" Margin="2" />
+                </Button>
+                <Button Grid.Column="2" Width="34" Click="LoadReadmeTemplateClick" Margin="4" Padding="2" ToolTip="Load Template">
+                    <iconPacks:PackIconBootstrapIcons Kind="Upload" Margin="2" />
+                </Button>
+            </Grid>
             <ListView Grid.Row="1" x:Name="selectedSectionsListView" d:ItemsSource='{d:SampleData}' Margin="2" SelectionMode="Single" SelectionChanged="SelectSectionFromReadmeSections" ScrollViewer.CanContentScroll="False" SelectedIndex="0" dd:DragDrop.IsDragSource="True" dd:DragDrop.IsDropTarget="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -108,7 +123,26 @@
                 <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
 
-            <Label Content="All sections" Margin="2" FontSize="14"/>
+            <Grid Background="{mah:StaticResource MahApps.Brushes.Accent}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+                
+                <Label Content="All sections" Margin="2" FontSize="16"/>
+                <Button Grid.Column="1" Width="34" Click="AddSectionClick" Margin="4" Padding="2" ToolTip="Add Section">
+                    <iconPacks:PackIconBootstrapIcons Kind="Plus" Margin="2" />
+                </Button>
+                <Button Grid.Column="2" Width="34" Click="SaveSectionsClick" Margin="0,4,0,4" Padding="2" ToolTip="Save Sections">
+                    <iconPacks:PackIconBootstrapIcons Kind="Download" Margin="2" />
+                </Button>
+                <Button Grid.Column="3" Width="34" Click="LoadSectionsClick" Margin="4" Padding="2" ToolTip="Load Sections">
+                    <iconPacks:PackIconBootstrapIcons Kind="Upload" Margin="2" />
+                </Button>
+            </Grid>
+            <!--<Label Content="All sections" Margin="2" FontSize="14"/>-->
             <ListView x:Name="allSectionsListView" Grid.Row="1" d:ItemsSource='{d:SampleData}' Margin="2" SelectionMode="Single" SelectionChanged="SelectSectionFromAllSections" ScrollViewer.CanContentScroll="False" dd:DragDrop.IsDragSource="True" dd:DragDrop.IsDropTarget="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>

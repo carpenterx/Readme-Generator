@@ -519,5 +519,15 @@ if (themeToggle.IsOn)
                 ThemeManager.Current.ChangeTheme(Application.Current, "Light.Teal");
             }
         }
+
+        private void SaveSectionsClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void LoadSectionsClick(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
