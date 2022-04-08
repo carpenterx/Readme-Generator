@@ -2,7 +2,7 @@
 
 A simple application for generating readme files inspired by [readme.so](https://readme.so/)
 
-![Readme Generator screenshot](screenshots/main-screen.png)
+![Readme Generator screenshot](screenshots/main-screen.jpg)
 
 ## Controls
 
