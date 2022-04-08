@@ -60,7 +60,7 @@ namespace Readme_Generator
             snippetsListView.ItemsSource = snippetsList;
         }
 
-        private ObservableCollection<T> LoadFileToList<T>(string filePath)
+        private static ObservableCollection<T> LoadFileToList<T>(string filePath)
         {
             ObservableCollection<T> list = new();
             if (File.Exists(filePath))
@@ -158,14 +158,14 @@ namespace Readme_Generator
             selectedSectionsListView.ScrollIntoView(selectedSectionsListView.SelectedItem);
         }
 
-        private Match GetPlaceholderMatch(string testString)
+        private static Match GetPlaceholderMatch(string testString)
         {
-            Regex rgx = new Regex(@"\$.+?\$");
+            Regex rgx = new(@"\$.+?\$");
 
             return rgx.Match(testString);
         }
 
-        private void FocusTextBox(TextBox textBox, int selectionStart, int selectionLength = 0)
+        private static void FocusTextBox(TextBox textBox, int selectionStart, int selectionLength = 0)
         {
             textBox.Focus();
             textBox.SelectionStart = selectionStart;
@@ -177,7 +177,7 @@ namespace Readme_Generator
             WrapSelectionWithCharacters(sectionTxt, "*", "*");
         }
 
-        private void WrapSelectionWithCharacters(TextBox textBox, string startChars, string endChars = "")
+        private static void WrapSelectionWithCharacters(TextBox textBox, string startChars, string endChars = "")
         {
             if (textBox.SelectionLength > 0)
             {
@@ -211,7 +211,7 @@ namespace Readme_Generator
             }
         }
 
-        private void WrapSelectionWithLines(TextBox textBox, string startChars, string endChars)
+        private static void WrapSelectionWithLines(TextBox textBox, string startChars, string endChars)
         {
             if (textBox.SelectionLength > 0)
             {
@@ -225,7 +225,7 @@ namespace Readme_Generator
                     .AppendLine(startChars)
                     .AppendLine(oldText.Substring(selectionStartIndex, selectionLength))
                     .AppendLine(endChars)
-                    .Append(oldText.Substring(selectionStartIndex + selectionLength));
+                    .Append(oldText.AsSpan(selectionStartIndex + selectionLength));
                 textBox.Text = newTextBuilder.ToString();
                 // the newlines shift the text by 4 characters
                 FocusTextBox(textBox, selectionStartIndex + startCharsLength + 4, selectionLength);
@@ -241,14 +241,14 @@ namespace Readme_Generator
                     .AppendLine(startChars)
                     .AppendLine()
                     .AppendLine(endChars)
-                    .Append(oldText.Substring(caretIndex));
+                    .Append(oldText.AsSpan(caretIndex));
                 textBox.Text = newTextBuilder.ToString();
                 // the newlines shift the text by 4 characters
                 FocusTextBox(textBox, caretIndex + startCharsLength + 4);
             }
         }
 
-        private void WrapSelectionWithLink(TextBox textBox)
+        private static void WrapSelectionWithLink(TextBox textBox)
         {
             // [GitHub](http://github.com)
             if (textBox.SelectionLength > 0)
@@ -418,7 +418,7 @@ namespace Readme_Generator
             Clipboard.SetText(readmeBuilder.ToString());
         }
 
-        private void InsertSnippet(TextBox textBox, string snippet)
+        private static void InsertSnippet(TextBox textBox, string snippet)
         {
             if (textBox.SelectionLength > 0)
             {
@@ -428,9 +428,9 @@ namespace Readme_Generator
                 int startCharsLength = snippet.Length;
                 StringBuilder newTextBuilder = new();
                 newTextBuilder
-                    .Append(oldText.Substring(0, selectionStartIndex))
+                    .Append(oldText.AsSpan(0, selectionStartIndex))
                     .Append(snippet)
-                    .Append(oldText.Substring(selectionStartIndex + selectionLength));
+                    .Append(oldText.AsSpan(selectionStartIndex + selectionLength));
                 textBox.Text = newTextBuilder.ToString();
                 FocusTextBox(textBox, selectionStartIndex + startCharsLength, selectionLength);
             }
@@ -441,9 +441,9 @@ namespace Readme_Generator
                 int startCharsLength = snippet.Length;
                 StringBuilder newTextBuilder = new();
                 newTextBuilder
-                    .Append(oldText.Substring(0, caretIndex))
+                    .Append(oldText.AsSpan(0, caretIndex))
                     .Append(snippet)
-                    .Append(oldText.Substring(caretIndex));
+                    .Append(oldText.AsSpan(caretIndex));
                 textBox.Text = newTextBuilder.ToString();
                 FocusTextBox(textBox, caretIndex + startCharsLength);
             }
@@ -451,8 +451,10 @@ namespace Readme_Generator
 
         private void AddSnippetClick(object sender, RoutedEventArgs e)
         {
-            SnippetWindow snippetWindow = new();
-            snippetWindow.Owner = this;
+            SnippetWindow snippetWindow = new()
+            {
+                Owner = this
+            };
             if (snippetWindow.ShowDialog() == true)
             {
                 snippetsList.Add(snippetWindow.GetSnippet());
@@ -543,7 +545,17 @@ namespace Readme_Generator
 
         private void LoadSectionsClick(object sender, RoutedEventArgs e)
         {
+            OpenFileDialog openFileDialog = new()
+            {
+                Title = "Load Sections",
+                Filter = "Yaml documents (.yml)|*.yml"
+            };
 
+            if (openFileDialog.ShowDialog() == true)
+            {
+                allSectionsList = LoadFileToList<SectionTemplate>(openFileDialog.FileName);
+                allSectionsListView.ItemsSource = allSectionsList;
+            }
         }
     }
 }
