@@ -14,6 +14,9 @@ using Microsoft.Win32;
 using MahApps.Metro.Controls;
 using ControlzEx.Theming;
 using Readme_Generator.Properties;
+using System.Windows.Media;
+using Path = System.IO.Path;
+using System.Windows.Media.Imaging;
 
 namespace Readme_Generator
 {
@@ -50,7 +53,7 @@ namespace Readme_Generator
             selectedSectionsList = LoadFileToList<SectionTemplate>(readmeTemplatePath);
 
             allSectionsListView.ItemsSource = allSectionsList;
-            selectedSectionsListView.ItemsSource = selectedSectionsList;
+            selectedSectionsListView_HELP.ItemsSource = selectedSectionsList;
         }
 
         private void LoadSnippets()
@@ -128,15 +131,15 @@ namespace Readme_Generator
                 }
                 else
                 {
-                    if (selectedSectionsListView.SelectedIndex < selectedSectionsListView.Items.Count - 1)
+                    if (selectedSectionsListView_HELP.SelectedIndex < selectedSectionsListView_HELP.Items.Count - 1)
                     {
-                        selectedSectionsListView.SelectedIndex++;
+                        selectedSectionsListView_HELP.SelectedIndex++;
                     }
                     else
                     {
-                        selectedSectionsListView.SelectedIndex = 0;
+                        selectedSectionsListView_HELP.SelectedIndex = 0;
                     }
-                    selectedSectionsListView.ScrollIntoView(selectedSectionsListView.SelectedItem);
+                    selectedSectionsListView_HELP.ScrollIntoView(selectedSectionsListView_HELP.SelectedItem);
                 }
             }
             catch (Exception exception)
@@ -147,15 +150,15 @@ namespace Readme_Generator
 
         private void FindPrevPlaceholderOrSection(TextBox textBox)
         {
-            if (selectedSectionsListView.SelectedIndex > 0)
+            if (selectedSectionsListView_HELP.SelectedIndex > 0)
             {
-                selectedSectionsListView.SelectedIndex--;
+                selectedSectionsListView_HELP.SelectedIndex--;
             }
             else
             {
-                selectedSectionsListView.SelectedIndex = selectedSectionsListView.Items.Count - 1;
+                selectedSectionsListView_HELP.SelectedIndex = selectedSectionsListView_HELP.Items.Count - 1;
             }
-            selectedSectionsListView.ScrollIntoView(selectedSectionsListView.SelectedItem);
+            selectedSectionsListView_HELP.ScrollIntoView(selectedSectionsListView_HELP.SelectedItem);
         }
 
         private static Match GetPlaceholderMatch(string testString)
@@ -510,7 +513,7 @@ namespace Readme_Generator
             if (openFileDialog.ShowDialog() == true)
             {
                 selectedSectionsList = LoadFileToList<SectionTemplate>(openFileDialog.FileName);
-                selectedSectionsListView.ItemsSource = selectedSectionsList;
+                selectedSectionsListView_HELP.ItemsSource = selectedSectionsList;
             }
         }
 
@@ -556,6 +559,17 @@ namespace Readme_Generator
                 allSectionsList = LoadFileToList<SectionTemplate>(openFileDialog.FileName);
                 allSectionsListView.ItemsSource = allSectionsList;
             }
+        }
+
+        private void SaveControlsPositions(object sender, RoutedEventArgs e)
+        {
+            /*ControlLogger.SetOutputFileName($"{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name} controls.txt");
+            ControlLogger.LogPositions();*/
+        }
+
+        private void ScreenshotControl(object sender, ExecutedRoutedEventArgs e)
+        {
+            ControlScreenshotter.TakeScreenshot();
         }
     }
 }

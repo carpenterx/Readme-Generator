@@ -14,7 +14,11 @@
         TitleCharacterCasing="Normal"
         Title="Readme Generator"
         Height="800" Width="1200"
+        Loaded="SaveControlsPositions"
         Closing="SaveData">
+    <Window.CommandBindings>
+        <CommandBinding Command="models:CustomCommands.Screenshot" Executed="ScreenshotControl" />
+    </Window.CommandBindings>
     <Window.Resources>
         <models:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
     </Window.Resources>
@@ -37,13 +41,13 @@
         </StackPanel>-->
         
         <StackPanel Orientation="Horizontal" Grid.Column="1" Margin="2" HorizontalAlignment="Center">
-            <Button Width="34" Click="MakeItalic" Margin="2" ToolTip="Italic">
+            <Button x:Name="italicButton_HELP" Width="34" Click="MakeItalic" Margin="2" ToolTip="Italic">
                 <iconPacks:PackIconBootstrapIcons Kind="TypeItalic" Margin="2" />
             </Button>
-            <Button Width="34" Click="MakeBold" Margin="2" ToolTip="Bold">
+            <Button x:Name="boldButton_HELP" Width="34" Click="MakeBold" Margin="2" ToolTip="Bold">
                 <iconPacks:PackIconBootstrapIcons Kind="TypeBold" Margin="2" />
             </Button>
-            <Button Width="34" Click="MakeCode" Margin="2" ToolTip="Code">
+            <Button x:Name="codeButton_HELP" Width="34" Click="MakeCode" Margin="2" ToolTip="Code">
                 <iconPacks:PackIconBootstrapIcons Kind="Braces" Margin="2" />
             </Button>
             <Button Width="34" Click="MakeLink" Margin="2" ToolTip="Link">
@@ -93,7 +97,7 @@
                     <iconPacks:PackIconBootstrapIcons Kind="Upload" Margin="2" />
                 </Button>
             </Grid>
-            <ListView Grid.Row="1" x:Name="selectedSectionsListView" d:ItemsSource='{d:SampleData}' Margin="2" SelectionMode="Single" SelectionChanged="SelectSectionFromReadmeSections" ScrollViewer.CanContentScroll="False" SelectedIndex="0" dd:DragDrop.IsDragSource="True" dd:DragDrop.IsDropTarget="True">
+            <ListView Grid.Row="1" x:Name="selectedSectionsListView_HELP" d:ItemsSource='{d:SampleData}' Margin="2" SelectionMode="Single" SelectionChanged="SelectSectionFromReadmeSections" ScrollViewer.CanContentScroll="False" SelectedIndex="0" dd:DragDrop.IsDragSource="True" dd:DragDrop.IsDropTarget="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Grid Margin="2">
