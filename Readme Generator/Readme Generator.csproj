@@ -10,6 +10,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="com.carpenter.Controls.Logger" Version="1.0.0" />
+    <PackageReference Include="com.carpenter.Controls.Screenshotter" Version="1.0.0" />
     <PackageReference Include="gong-wpf-dragdrop" Version="3.1.1" />
     <PackageReference Include="MahApps.Metro" Version="2.4.7" />
     <PackageReference Include="MahApps.Metro.IconPacks.BootstrapIcons" Version="4.11.0" />

@@ -14,9 +14,7 @@ using Microsoft.Win32;
 using MahApps.Metro.Controls;
 using ControlzEx.Theming;
 using Readme_Generator.Properties;
-using System.Windows.Media;
 using Path = System.IO.Path;
-using System.Windows.Media.Imaging;
 
 namespace Readme_Generator
 {
@@ -563,13 +561,14 @@ namespace Readme_Generator
 
         private void SaveControlsPositions(object sender, RoutedEventArgs e)
         {
-            /*ControlLogger.SetOutputFileName($"{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name} controls.txt");
-            ControlLogger.LogPositions();*/
+            string applicationName = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
+            ControlLogger.Logger.SetOutputFileName($"{applicationName} controls.txt");
+            ControlLogger.Logger.LogPositions();
         }
 
         private void ScreenshotControl(object sender, ExecutedRoutedEventArgs e)
         {
-            ControlScreenshotter.TakeScreenshot();
+            Controls.Screenshotter.TakeScreenshot();
         }
     }
 }
